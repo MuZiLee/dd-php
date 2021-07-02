@@ -1,0 +1,945 @@
+<div class="layui-fluid">
+    <div class="layui-row">
+
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+
+                <script type="text/html" template="">
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                        <legend>{{d.params.factory_name}}</legend>
+                    </fieldset>
+                </script>
+                <div class="layui-card-body">
+                    <div class="layui-form" lay-filter="LAY-filter-factory-look-form">
+
+                        <div class="layui-form-item">
+                            <!--上传Logo-->
+                            <div class="layui-form-item">
+                                <div class="layui-upload">
+                                    <div class="layui-upload-list">
+                                        <script type="text/html" template="">
+                                            <img class="layui-upload-img" id="logo" name="logo" src="{{d.params.logo}}" style="max-height: 200px; max-width: 200px">
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>地址位置信息</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工厂名称</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text" aria-required="true"
+                                               name="factory_name" id="factory_name" value="{{ d.params.factory_name }}"
+                                               lay-filter="factory_name" class="layui-input">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">省份</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text" aria-required="true"
+                                        name="province" id="province" value="{{d.params.province}}"
+                                        lay-filter="province" class="layui-input">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">城市</label>
+                                <div class="layui-input-inline">
+
+                                    <script type="text/html" template>
+                                        <input type="text"
+                                               aria-required="true"
+                                               name="city"
+                                               id="city"
+                                               value="{{d.params.city}}"
+                                               lay-filter="city"
+                                               class="layui-input">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">县/区/镇</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        aria-required="true"
+                                        name="district"
+                                        id="district"
+                                               value="{{d.params.district}}"
+                                        lay-filter="district"
+                                        class="layui-input">
+                                    </script>
+                                </div>
+
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">详细地址</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        aria-required="true"
+                                        name="addres"
+                                        id="addres"
+                                               value="{{d.params.addres}}"
+                                        lay-filter="addres"
+                                        class="layui-input">
+                                    </script>
+                                </div>
+
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">经纬度</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        aria-required="true"
+                                        name="location"
+                                        id="location"
+                                               value="{{d.params.location}}"
+                                        lay-filter="location"
+                                        class="layui-input">
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--合作方式-->
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>签单信息</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">合作方式</label>
+                                <div class="layui-input-inline">
+                                    <script template="" type="text/html">
+                                        <input class="layui-input"
+                                        type="text"
+                                        id="cooperation_mode"
+                                        lay-filter="cooperation_mode"
+                                               value="{{d.params.signingInformation.cooperation_mode}}"
+                                        name="cooperation_mode">
+                                    </script>
+                                </div>
+                            </div>
+
+                            <!--工资发放方式-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工资结算</label>
+                                <div class="layui-input-inline">
+                                    <script template="" type="text/html">
+                                        <input class="layui-input"
+                                               type="text"
+                                               id="salary_payment_method"
+                                               lay-filter="salary_payment_method"
+                                               value="{{d.params.signingInformation.salary_payment_method}}"
+                                               name="salary_payment_method">
+                                    </script>
+                                </div>
+                            </div>
+                            <!--签单价格-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">签单价</label>
+                                <div class="layui-input-inline">
+                                    <script template="" type="text/html">
+                                        <input class="layui-input"
+                                               type="text"
+                                               id="signed_unit_price"
+                                               lay-filter="signed_unit_price"
+                                               value="{{d.params.signingInformation.signed_unit_price}}"
+                                               name="signed_unit_price">
+                                    </script>
+                                </div>
+                            </div>
+                            <!--员工单价-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">员工单价</label>
+                                <div class="layui-input-inline">
+                                    <script template="" type="text/html">
+                                        <input class="layui-input"
+                                               type="text"
+                                               id="employee_unit_price"
+                                               lay-filter="employee_unit_price"
+                                               value="{{d.params.signingInformation.employee_unit_price}}"
+                                               name="employee_unit_price">
+                                    </script>
+                                </div>
+                            </div>
+                            <!--老师提成-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">老师提成</label>
+                                <div class="layui-input-inline">
+                                    <script template="" type="text/html">
+                                        <input class="layui-input"
+                                               type="text"
+                                               id="commission_for_teacher"
+                                               lay-filter="commission_for_teacher"
+                                               value="{{d.params.signingInformation.commission_for_teacher}}"
+                                               name="commission_for_teacher">
+                                    </script>
+                                </div>
+                            </div>
+
+                            <!--业务员提成-->
+                            <div class="layui-inline">
+                                <label class="layui-form-label">业务员提成</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input class="layui-input"
+                                        type="text"
+                                        id="commission_for_salesman"
+                                        lay-filter="commission_for_salesman"
+                                       value="{{d.params.signingInformation.commission_for_salesman}}"
+                                        name="commission_for_salesman">
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">合同届满薪资结算日期</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input class="layui-input"
+                                        type="text"
+                                        id="settlement_date"
+                                        lay-filter="settlement_date"
+                                               value="{{d.params.signingInformation.settlement_date}}"
+                                        name="settlement_date">
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">合同有效期</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input class="layui-input"
+                                        type="text"
+                                        id="startTime"
+                                        lay-filter="startTime"
+                                               value="{{d.params.signingInformation.startTime}}"
+                                        name="startTime">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid">-</div>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        placeholder="结束日期"
+                                        class="layui-input"
+                                        id="endTime"
+                                        name="endTime"
+                                               value="{{d.params.signingInformation.endTime}}"
+                                        lay-filter="endTime"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!--工厂信息-->
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>工厂信息</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">厂房性质</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="nature_of_plant"
+                                               name="nature_of_plant"
+                                               value="{{d.params.information.nature_of_plant}}"
+                                               lay-filter="nature_of_plant"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">企业性质</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="nature_of_enterprise"
+                                               name="nature_of_enterprise"
+                                               value="{{d.params.information.nature_of_enterprise}}"
+                                               lay-filter="nature_of_enterprise"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">固定资产</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="fixed_assets"
+                                               name="fixed_assets"
+                                               value="{{d.params.information.fixed_assets}}"
+                                               lay-filter="fixed_assets"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">万</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">注册资金</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="registered_capital"
+                                               name="registered_capital"
+                                               value="{{d.params.information.registered_capital}}"
+                                               lay-filter="registered_capital"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工厂面积</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="plant_area"
+                                               name="plant_area"
+                                               value="{{d.params.information.plant_area}}"
+                                               lay-filter="plant_area"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">平方</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">男女比例</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="ratio_of_men_to_women"
+                                               name="ratio_of_men_to_women"
+                                               value="{{d.params.information.ratio_of_men_to_women}}"
+                                               lay-filter="ratio_of_men_to_women"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">现有员工</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="existing_employees"
+                                               name="existing_employees"
+                                               value="{{d.params.information.existing_employees}}"
+                                               lay-filter="existing_employees"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">人</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">平均年龄</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="average_age"
+                                               name="average_age"
+                                               value="{{d.params.information.average_age}}"
+                                               lay-filter="average_age"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">岁</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">现有招聘途径</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="existing_recruitment_channels"
+                                               name="existing_recruitment_channels"
+                                               value="{{d.params.information.existing_recruitment_channels}}"
+                                               lay-filter="existing_recruitment_channels"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">稳定年龄段</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="stable_age"
+                                               name="stable_age"
+                                               value="{{d.params.information.stable_age}}"
+                                               lay-filter="stable_age"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">岁</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">预计需求量</label>
+                                <div class="layui-input-inline">
+
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                               placeholder="结束日期"
+                                               class="layui-input"
+                                               id="expected_demand"
+                                               name="expected_demand"
+                                               value="{{d.params.information.expected_demand}}"
+                                               lay-filter="expected_demand"
+                                               aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">人</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用过的工种</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-block"
+                                 id="used_jobs"
+                                 name="used_jobs"
+                                 lay-filter="used_jobs"
+                                 aria-required="true"></div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">不好招的工种</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-block"
+                                 id="bad_jobs"
+                                 name="bad_jobs"
+                                 lay-filter="bad_jobs"
+                                 aria-required="true"></div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用工紧张月</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-block"
+                                 id="labor_shortage_month"
+                                 name="labor_shortage_month"
+                                 lay-filter="labor_shortage_month"
+                                 aria-required="true"></div>
+                        </div>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>环境遇待遇</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">年龄要求</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="age_requirements"
+                                        name="age_requirements"
+                                               value="{{d.params.environmental.age_requirements}}"
+                                        lay-filter="age_requirements"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">岁</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工作时长</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="数字"
+                                        id="working_hours"
+                                        name="working_hours"
+                                               value="{{d.params.environmental.working_hours}}"
+                                        lay-filter="working_hours"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">小时/天</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">每月休息多少天</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="数字"
+                                        id="rest_day_count"
+                                        name="rest_day_count"
+                                               value="{{d.params.environmental.rest_day_count}}"
+                                        lay-filter="rest_day_count"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">天/月</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">上班方式</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="way_to_work"
+                                        name="way_to_work"
+                                               value="{{d.params.environmental.way_to_work}}"
+                                        lay-filter="way_to_work"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">是否有保险</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="is_insurance"
+                                        name="is_insurance"
+                                               value="{{d.params.environmental.is_insurance}}"
+                                        lay-filter="is_insurance"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">是否体验</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        placeholder="文字"
+                                        class="layui-input"
+                                        id="is_experience"
+                                        name="is_experience"
+                                               value="{{d.params.environmental.is_experience}}"
+                                        lay-filter="is_experience"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">宿舍位置</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="dormitory_location"
+                                        name="dormitory_location"
+                                               value="{{d.params.environmental.dormitory_location}}"
+                                        lay-filter="dormitory_location"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">宿舍住多少人</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="people_of_dormitory"
+                                        name="people_of_dormitory"
+                                               value="{{d.params.environmental.people_of_dormitory}}"
+                                        lay-filter="people_of_dormitory"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">是否有厕所</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="is_toilet"
+                                        name="is_toilet"
+                                               value="{{d.params.environmental.is_toilet}}"
+                                        lay-filter="is_toilet"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">膳食标准</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        placeholder="文字"
+                                        class="layui-input"
+                                        id="dietary_standard"
+                                        name="dietary_standard"
+                                               value="{{d.params.environmental.dietary_standard}}"
+                                        lay-filter="dietary_standard"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">夜班补贴</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        placeholder="文字"
+                                        class="layui-input"
+                                        id="night_shift_allowance"
+                                        name="night_shift_allowance"
+                                               value="{{d.params.environmental.night_shift_allowance}}"
+                                        lay-filter="night_shift_allowance"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">民族限制</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="ethnic_restrictions"
+                                        name="ethnic_restrictions"
+                                               value="{{d.params.environmental.ethnic_restrictions}}"
+                                        lay-filter="ethnic_restrictions"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">所需证件</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        placeholder="文字"
+                                        class="layui-input"
+                                        id="required_certificates"
+                                        name="required_certificates"
+                                               value="{{d.params.environmental.required_certificates}}"
+                                        lay-filter="required_certificates"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">培训时间</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="training_time"
+                                        name="training_time"
+                                               value="{{d.params.environmental.training_time}}"
+                                        lay-filter="training_time"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">培训内容</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="文字"
+                                        id="training_content"
+                                        name="training_content"
+                                               value="{{d.params.environmental.training_content}}"
+                                        lay-filter="training_content"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!--接待人-->
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>相关人员</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">接待人</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="接待人"
+                                        id="receptionist"
+                                        name="receptionist"
+                                               value="{{d.params.personnel.receptionist}}"
+                                        lay-filter="receptionist"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">接待人联系电话</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="tel"
+                                        class="layui-input"
+                                        autocomplete="off"
+                                        placeholder="联系电话"
+                                        id="receptionist_phone"
+                                        name="receptionist_phone"
+                                               value="{{d.params.personnel.receptionist_phone}}"
+                                        lay-filter="receptionist_phone"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">宿舍管理员</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="tel"
+                                        placeholder="宿舍管理员"
+                                        autocomplete="off"
+                                        class="layui-input"
+                                        id="houseparent"
+                                        name="houseparent"
+                                               value="{{d.params.personnel.houseparent}}"
+                                        lay-filter="houseparent">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">宿舍管理员联系电话</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="tel"
+                                        class="layui-input"
+                                        autocomplete="off"
+                                        placeholder="联系电话"
+                                        id="houseparent_phone"
+                                        name="houseparent_phone"
+                                               value="{{d.params.personnel.houseparent_phone}}"
+                                        lay-filter="houseparent_phone">
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">跟进人</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="text"
+                                        class="layui-input"
+                                        placeholder="跟进人"
+                                        id="follow_up_person"
+                                        name="follow_up_person"
+                                               value="{{d.params.personnel.follow_up_person}}"
+                                        lay-filter="follow_up_person"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">跟进人联系电话</label>
+                                <div class="layui-input-inline">
+                                    <script type="text/html" template="">
+                                        <input type="tel"
+                                        placeholder="联系电话"
+                                        autocomplete="off"
+                                        class="layui-input"
+                                        id="follow_up_person_phone"
+                                        name="follow_up_person_phone"
+                                               value="{{d.params.personnel.follow_up_person_phone}}"
+                                        lay-filter="follow_up_person_phone"
+                                        aria-required="true">
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>备注</legend>
+                        </fieldset>
+                        <div class="layui-form-item layui-form-text">
+                            <script type="text/html" template="">
+                                <textarea id="remark" name="remark" class="layui-textarea">{{d.params.remark}}</textarea>
+                            </script>
+                        </div>
+
+
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>工厂环境图片</legend>
+                        </fieldset>
+
+                        <div class="layui-upload">
+                            <div class="layui-upload-list">
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th>浏览图</th>
+                                        <th>文件名</th>`
+                                    </tr>
+                                    </thead>
+                                    <tbody id="factory-look-images-list" style="text-align: center"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <script type="text/html" template="">
+                            <input type="hidden" name="id" id="id" value="{{d.params.id}}">
+
+                            <textarea type="hidden" aria-hidden="true" hidden id="data" name="data" class="layui-textarea" style="text-decoration-color: transparent; color: transparent; background-color: transparent">{{ JSON.stringify( d.params ) }}</textarea>
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    layui.use(['form', 'jquery', 'layer', 'admin'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+        var layer = layui.layer;
+        var admin = layui.admin;
+
+
+
+        setTimeout(function () {
+            var data = JSON.parse($("#data").val());
+            var information = data.information;
+            console.log(data.information);
+            console.log(data.environmental);
+            console.log(data.images);
+            console.log(data.signingInformation);
+            /**
+             * 用过的工种 used_jobs
+             */
+            layui.each(information.used_jobs, function(index, item) {
+                var checkBox = document.createElement("input");
+                checkBox.setAttribute("type", "checkbox");
+                checkBox.setAttribute("value", item);
+                checkBox.setAttribute("title", item);
+                checkBox.setAttribute("checked", true);
+                checkBox.setAttribute("name", 'used_jobs');
+                $('#used_jobs').append(checkBox);
+            });
+            /**
+             * 不好招的工种 bad_jobs
+             */
+            layui.each(information.bad_jobs, function(index, item) {
+                var checkBox = document.createElement("input");
+                checkBox.setAttribute("type", "checkbox");
+                checkBox.setAttribute("value", item);
+                checkBox.setAttribute("title", item);
+                checkBox.setAttribute("checked", true);
+                checkBox.setAttribute("name", 'bad_jobs');
+                $('#bad_jobs').append(checkBox);
+            });
+            /**
+             * 用工紧张月 month
+             */
+            layui.each(information.labor_shortage_month, function(index, item) {
+                var checkBox = document.createElement("input");
+                checkBox.setAttribute("type", "checkbox");
+                checkBox.setAttribute("value", item+"月份");
+                checkBox.setAttribute("title", item+"月份");
+                checkBox.setAttribute("checked", true);
+                checkBox.setAttribute("name", 'labor_shortage_month');
+                $('#labor_shortage_month').append(checkBox);
+            });
+            form.render('checkbox');
+            form.render('select');
+
+
+
+
+            console.log("id:"+$("#id").val());
+            admin.req({
+                url: '/api/factory/getImages'
+                ,type: "post"
+                ,data: {fid: $("#id").val()}
+                ,success: function(res) {
+                    var images = res.data;
+                    if (res.code == 0) {
+
+                        var demoListView = $('#factory-look-images-list');
+                        layui.each(images, function (index, item) {
+                            var tr = $(['<tr id="upload-' + index + '">'
+                                , '<td>'
+                                , '<img src="' + item.url + '" alt="' + item.url + '">'
+                                , '</td>'
+                                , '<td>' + item.url + '</td>'
+                                , '<td></td>'
+                                , '<td>已上传</td>'
+                                , '<td>'
+                                , '<button class="layui-btn layui-btn-xs images-reload layui-hide">重传</button>'
+                                , '<button class="layui-btn layui-btn-xs layui-btn-danger images-delete">删除</button>'
+                                , '</td>'
+                                , '</tr>'].join(''));
+                            demoListView.append(tr);
+                        });
+                        form.render();
+                    }
+                }
+            });
+
+        }, 1000);
+
+
+
+
+
+
+
+
+    });
+</script>

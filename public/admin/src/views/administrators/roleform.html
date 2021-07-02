@@ -1,0 +1,98 @@
+
+
+<div class="layui-form" lay-filter="layuiadmin-form-role" style="padding: 20px 30px 0 0;">
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户</label>
+    <div class="layui-input-block">
+      <script type="text/html" template>
+        <select lay-filter="uid"
+                id="uid"
+                name="uid"
+                lay-filter="uid">
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">权限范围</label>
+    <div class="layui-input-block" id="rids" name="rids" lay-filter="rids" aria-required="true">
+<!--      <input type="checkbox" name="0" value="9" lay-skin="primary" lay-filter="ridaction" title="驻场经理">-->
+<!--      <input type="checkbox" name="1" value="11" lay-skin="primary" lay-filter="ridaction" title="业务员">-->
+<!--      <input type="checkbox" name="2" value="12" lay-skin="primary" lay-filter="ridaction" title="人事部">-->
+<!--      <input type="checkbox" name="3" value="13" lay-skin="primary" lay-filter="ridaction" title="财务部">-->
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <input type="button" lay-submit lay-filter="LAY-user-role-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</div>
+
+<script>
+layui.use(['admin', 'form'], function(){
+  var $ = layui.$
+  ,form = layui.form
+  ,admin = layui.admin;
+  console.log("roleform");
+
+  /// 渲染未分配的用户
+  admin.req({
+    url: "/api/account/getWhitelist" // 获取白名单列表
+    , success: function(res) {
+      console.log(res.data);
+      if (res.code == 0) {
+        var select_obj = $("#uid");
+        layui.each(res.data, function (index, item) {
+
+          if (item.username) {
+            var option = document.createElement("option");
+            option.value = item.id;
+            option.innerHTML = item.username ? item.username : item.phone;
+            option.name = "uid";
+            if (index == 0) {
+              option.selected = true;
+            }
+            select_obj.append(option);
+          }
+
+
+        });
+        form.render("select");
+      }
+    }
+  });
+
+  form.on('submit(LAY-user-role-submit)', function(data){
+    layui.layer.closeAll();
+    layui.table.reload("LAY-user-back-role");
+  });
+
+
+
+  var items = [
+    {"id":9, "title": "驻场经理"},
+    {"id":11, "title": "业务员"},
+    {"id":12, "title": "人事部"},
+    {"id":13, "title": "财务部"},
+    {"id":14, "title": "总经理"},
+    {"id":15, "title": "蛋蛋"},
+  ];
+  layui.each(items, function(index, item) {
+    var checkBox = document.createElement("input");
+    checkBox.setAttribute("type", "checkbox");
+    checkBox.setAttribute("value", item.id);
+    checkBox.setAttribute("name", "like["+item.id+"]");
+    checkBox.setAttribute("lay-skin", 'primary');
+    checkBox.setAttribute("lay-event", '');
+    checkBox.setAttribute("lay-filter", 'rids');
+    checkBox.setAttribute("title", item.title);
+    $('#rids').append(checkBox);
+  });
+
+
+  
+});
+</script>

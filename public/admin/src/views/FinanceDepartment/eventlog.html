@@ -1,0 +1,35 @@
+
+<title>事件记录</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>财务部</cite></a>
+        <a><cite>工作流</cite></a>
+        <a><cite>事件记录</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+<!--            <div style="padding-bottom: 10px;">-->
+<!--                <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-submit lay-filter="LAY-form-submit-filter-abonus">结算</button>-->
+<!--            </div>-->
+
+            <table id="LAY-eventlog-list" lay-filter="LAY-eventlog-list"></table>
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.avatar }}>
+            </script>
+
+            <script type="text/html" id="table-eventlog-tages">
+                <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="look"><i class="layui-icon layui-icon-search"></i>查看</a>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use('eventlog', layui.factory('eventlog'));
+</script>

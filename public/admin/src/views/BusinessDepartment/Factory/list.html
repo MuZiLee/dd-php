@@ -1,0 +1,293 @@
+<title>工厂与职位管理 - 工厂列表</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>工厂与职位管理</cite></a>
+        <a><cite>工厂列表</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+                    <table class="layui-hide" id="LAY-factory-list" lay-data="{id: 'LAY-factory-list'}" lay-filter="LAY-factory-list"></table>
+                    <script type="text/html" id="imgTpl">
+                        <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.logo }}>
+                    </script>
+                    <script type="text/html" id="Lay-factory-list-toolbar">
+                        <div class="layui-btn-container">
+
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-event="add">添加工厂</button>
+                        </div>
+                    </script>
+                    <!--工厂名称-->
+                    <script type="text/html" id="statusTpl">
+                        {{# if(d.status == 0) { }}
+                        <span class="layui-badge layui-bg-orange">待审核</span>
+                        {{# } else if(d.status == 1) { }}
+                        <span class="layui-badge layui-bg-blue">已上架</span>
+                        {{# } else { }}
+                        <span class="layui-badge layui-bg-black">已下架</span>
+                        {{# } }}
+                    </script>
+
+
+                    <!--工厂名称-->
+                    <script type="text/html" id="factoryNameTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory_name || ""}}</label>
+                    </script>
+                    <!--省-->
+                    <script type="text/html" id="provinceTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.province || ""}}</label>
+                    </script>
+                    <!--市-->
+                    <script type="text/html" id="cityTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.city || ""}}</label>
+                    </script>
+                    <!--市-->
+                    <script type="text/html" id="districtTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.district || ""}}</label>
+                    </script>
+                    <!--地址-->
+                    <script type="text/html" id="addresTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.addres || ""}}</label>
+                    </script>
+                    <!--入职数量-->
+                    <script type="text/html" id="employedUsersTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.employedUsers.length+"人"}}</label>
+                    </script>
+                    <!--年龄要求-->
+                    <script type="text/html" id="age_requirementsTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.age_requirements || ""}}</label>
+                    </script>
+                    <!--每天工作-->
+                    <script type="text/html" id="working_hoursTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.working_hours || ""}}</label>
+                    </script>
+                    <!--每月休息天数-->
+                    <script type="text/html" id="rest_day_countTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.rest_day_count || ""}}</label>
+                    </script>
+                    <!--上班方式-->
+                    <script type="text/html" id="way_to_workTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.way_to_work || ""}}</label>
+                    </script>
+                    <!--是否有保险-->
+                    <script type="text/html" id="is_insuranceTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.is_insurance || ""}}</label>
+                    </script>
+                    <!--是否体验-->
+                    <script type="text/html" id="is_experienceTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.is_experience || ""}}</label>
+                    </script>
+                    <!--宿舍位置-->
+                    <script type="text/html" id="dormitory_locationTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.dormitory_location || ""}}</label>
+                    </script>
+                    <!--宿舍住多少人-->
+                    <script type="text/html" id="people_of_dormitoryTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.people_of_dormitory || ""}}</label>
+                    </script>
+                    <!--是否有厕所-->
+                    <script type="text/html" id="is_toiletTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.is_toilet || ""}}</label>
+                    </script>
+                    <!--膳食标准-->
+                    <script type="text/html" id="dietary_standardTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.dietary_standard || ""}}</label>
+                    </script>
+                    <!--夜班补贴-->
+                    <script type="text/html" id="night_shift_allowanceTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.night_shift_allowance || ""}}</label>
+                    </script>
+                    <!--民族限制-->
+                    <script type="text/html" id="ethnic_restrictionsTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.ethnic_restrictions || ""}}</label>
+                    </script>
+                    <!--所需证件-->
+                    <script type="text/html" id="required_certificatesTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.required_certificates || ""}}</label>
+                    </script>
+                    <!--培训时间-->
+                    <script type="text/html" id="training_timeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.training_time || ""}}</label>
+                    </script>
+                    <!--培训内容-->
+                    <script type="text/html" id="training_contentTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.environmental.training_content || ""}}</label>
+                    </script>
+
+
+
+                    <!--information-->
+                    <!--厂房性质-->
+                    <script type="text/html" id="nature_of_plantTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.nature_of_plant || ""}}</label>
+                    </script>
+                    <!--企业性质-->
+                    <script type="text/html" id="nature_of_enterpriseTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.nature_of_enterprise || ""}}</label>
+                    </script>
+                    <!--固定资产-->
+                    <script type="text/html" id="fixed_assetsTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.fixed_assets || ""}}</label>
+                    </script>
+                    <!--注册资金-->
+                    <script type="text/html" id="registered_capitalTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.registered_capital || ""}}</label>
+                    </script>
+                    <!--工厂面积-->
+                    <script type="text/html" id="plant_areaTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.plant_area || ""}}</label>
+                    </script>
+                    <!--男女比例-->
+                    <script type="text/html" id="ratio_of_men_to_womenTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.ratio_of_men_to_women || ""}}</label>
+                    </script>
+                    <!--现有员工-->
+                    <script type="text/html" id="existing_employeesTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.existing_employees || ""}}</label>
+                    </script>
+                    <!--平均年龄-->
+                    <script type="text/html" id="average_ageTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.average_age || ""}}</label>
+                    </script>
+                    <!--现有招聘途径-->
+                    <script type="text/html" id="existing_recruitment_channelsTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.existing_recruitment_channels || ""}}</label>
+                    </script>
+                    <!--稳定年龄段-->
+                    <script type="text/html" id="stable_ageTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.stable_age || ""}}</label>
+                    </script>
+                    <!--预算招聘人数-->
+                    <script type="text/html" id="expected_demandTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.information.expected_demand || ""}}</label>
+                    </script>
+
+
+
+                    <!--personnel-->
+                    <!--接待人-->
+                    <script type="text/html" id="receptionistTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.personnel.receptionist || ""}}</label>
+                    </script>
+                    <!--接待人联系电话-->
+                    <script type="text/html" id="receptionist_phoneTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.personnel.receptionist_phone || ""}}</label>
+                    </script>
+                    <!--宿舍管理员-->
+                    <script type="text/html" id="houseparentTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.personnel.houseparent || ""}}</label>
+                    </script>
+                    <!--宿舍管理员联系电话-->
+                    <script type="text/html" id="houseparent_phoneTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.personnel.houseparent_phone || ""}}</label>
+                    </script>
+                    <!--跟进人-->
+                    <script type="text/html" id="follow_up_personTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.personnel.follow_up_person || ""}}</label>
+                    </script>
+                    <!--跟进人联系电话-->
+                    <script type="text/html" id="follow_up_person_phoneTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.personnel.follow_up_person_phone || ""}}</label>
+                    </script>
+
+
+
+                    <!--logo-->
+                    <script type="text/html" id="logoTpl">
+                        <img style="display: inline-block; width: 32px; height: 32px" src='{{ d.logo  || ""}}'>
+                    </script>
+
+
+
+                    <!--signingInformation-->
+                    <!--合作方式-->
+                    <script type="text/html" id="cooperation_modeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.cooperation_mode || ""}}</label>
+                    </script>
+                    <!--工资发放方式-->
+                    <script type="text/html" id="salary_payment_methodTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.salary_payment_method || ""}}</label>
+                    </script>
+                    <!--签单价-->
+                    <script type="text/html" id="signed_unit_priceTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.signed_unit_price || ""}}</label>
+                    </script>
+                    <!--员工单价-->
+                    <script type="text/html" id="employee_unit_priceTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.employee_unit_price || ""}}</label>
+                    </script>
+                    <!--教师佣金-->
+                    <script type="text/html" id="commission_for_teacherTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.commission_for_teacher || ""}}</label>
+                    </script>
+                    <!--售货员佣金-->
+                    <script type="text/html" id="commission_for_salesmanTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.commission_for_salesman || ""}}</label>
+                    </script>
+                    <!--结算日期-->
+                    <script type="text/html" id="settlement_dateTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.settlement_date || ""}}</label>
+                    </script>
+                    <!--合同期限-->
+                    <script type="text/html" id="startTimeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.signingInformation.startTime +" : "+ d.signingInformation.endTime}}</label>
+                    </script>
+
+
+                    <!--keyboarder-->
+                    <!--录入员-->
+                    <script type="text/html" id="keyboarderTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.keyboarder.username || d.keyboarder.phone}}</label>
+                    </script>
+                    <!--创建时间-->
+                    <script type="text/html" id="create_timeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.create_time || ""}}</label>
+                    </script>
+                    <!--税费-->
+                    <script type="text/html" id="income_taxTpl">
+                        {{# if (d.signingInformation.income_tax) { }}
+                        <button class="layui-btn layui-btn-xs layui-bg-black" lay-event="tax-edit">修改</button>
+                        {{# } else { }}
+                        <button class="layui-btn layui-btn-xs layui-bg-blue" lay-event="tax-add">添加</button>
+                        {{# } }}
+                    </script>
+                    <!--signingInformation-保险费-->
+                    <script type="text/html" id="iinsurance_premiumTpl">
+                        {{# if (d.signingInformation.insurance_premium) { }}
+                        <button class="layui-btn layui-btn-xs layui-btn-black" lay-event="insurance-edit">修改</button>
+                        {{# } else { }}
+                        <button class="layui-btn layui-btn-xs layui-bg-blue" lay-event="insurance-add">添加</button>
+                        {{# } }}
+                    </script>
+
+                    <!--税费-->
+                    <script type="text/html" id="imagesTpl">
+                        <button class="layui-btn layui-btn-xs layui-bg-blue" lay-event="seeimages">查看</button>
+                    </script>
+
+                    <script type="text/html" id="LAY-factory-list-toolbar-tages">
+                        {{# if(d.status == 0 || d.status > 1){ }}
+                        <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="lookinfo"><i class="layui-icon layui-icon-edit"></i>修改</a>
+                        {{# } else if (d.status == 1){ }}
+                        <a class="layui-btn layui-btn-danger layui-bg-blue layui-btn-xs" lay-event="lookinfo"><i class="layui-icon layui-icon-search"></i>查看</a>
+
+                        {{# } }}
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use('factorys', layui.factory('factorys'));
+</script>

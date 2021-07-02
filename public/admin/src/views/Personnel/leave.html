@@ -1,0 +1,86 @@
+<title>请假</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>人事部</cite></a>
+        <a><cite>请假</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <!--        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="leave-form-list">-->
+        <!--            <div class="layui-form-item">-->
+
+        <!--                <fieldset class="layui-elem-field site-demo-button" style="padding-left: 20px; padding-bottom: 20px">-->
+        <!--                    <legend>入职审核</legend>-->
+        <!--                    <div>-->
+        <!--                        <button class="layui-btn layui-btn-sm layui-bg-green" lay-submit lay-filter="entry-audit">审核</button>-->
+        <!--                    </div>-->
+        <!--                </fieldset>-->
+
+        <!--                &lt;!&ndash;<fieldset class="layui-elem-field site-demo-button" style="padding-left: 20px; padding-bottom: 20px">&ndash;&gt;-->
+        <!--                    &lt;!&ndash;<legend>搜索</legend>&ndash;&gt;-->
+        <!--                    &lt;!&ndash;<div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;<input type="text" class="layui-input" id="LAY-eventsUnprocessed-time" lay-filter="LAY-app-order-search" placeholder="起始日期 - 结束日期" style="width: 30%; text-align: center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;<button class="layui-btn" lay-submit lay-filter="LAY-app-order-search" style="width: 30%">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;<i class="layui-icon layui-icon-search layuiadmin-button-btn" >搜索</i>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;</button>&ndash;&gt;-->
+        <!--                    &lt;!&ndash;</div>&ndash;&gt;-->
+        <!--                &lt;!&ndash;</fieldset>&ndash;&gt;-->
+        <!--            </div>-->
+
+        <!--        </div>-->
+
+        <script type="text/html" id="leave-table-header-list" lay-filter="leave-table-header-list">
+            <button class="layui-btn layui-btn-sm layui-bg-green" lay-event="entry-audit">审核</button>
+        </script>
+
+        <div class="layui-card-body">
+
+            <table class="layui-hide" id="leave-table-list" lay-filter="leave-table-list"></table>
+
+
+            <script type="text/html" id="logsTpl">
+                <button button type="button" class="layui-btn layui-btn-xs layui-bg-blue" lay-event="logsTpl">查看</button>
+            </script>
+
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.user.avatar }}>
+            </script>
+
+            <script type="text/html" id="factoryTpl">
+                <label>{{ d.factory.factory_name }}</label>
+            </script>
+            <script type="text/html" id="jobTpl">
+                <span class="layui-badge layui-bg-gray">{{ d.job.job_name }}</span>
+            </script>
+
+
+            <script type="text/html" id="titleTpl">
+                <label>{{ d.etype.title }}</label>
+            </script>
+            <script type="text/html" id="usernameTpl">
+                <label>{{ d.user.username }}</label>
+            </script>
+
+            <script type="text/html" id="logsroleTpl">
+                {{# if(d.logs.pop()){ }}
+                <label>{{ d.logs.pop().role.title }}</label>
+                {{# } }}
+            </script>
+
+            <script type="text/html" id="createTimeTpl">
+                <label>{{ d.create_time }}</label>
+            </script>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    layui.use('personnel', layui.factory('personnel'));
+</script>

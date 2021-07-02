@@ -1,0 +1,96 @@
+
+  <div class="layui-form" lay-filter="shop-list-set-list" id="shop-list-set-list">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">商品类型</label>
+      <div class="layui-input-block">
+        <select name="tid" id="tid" lay-filter="aihao">
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">Banner</label>
+      <div class="layui-input-block">
+        <script type="text/html" template="">
+          {{# if(d.params.type){ }}
+          <input type="checkbox" checked name="type" id="type" lay-skin="switch" lay-text="是|否">
+          {{# }else{ }}
+          <input type="checkbox" name="type" id="type" lay-skin="switch" lay-text="是|否">
+          {{# } }}
+
+        </script>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">商品状态</label>
+      <div class="layui-input-block">
+
+        <script type="text/html" template="">
+
+          {{# if(d.params.status == 1){ }}
+          <input type="radio" name="status" value="0" title="待上架">
+          <input type="radio" name="status" value="1" title="上架商品" checked>
+          <input type="radio" name="status" value="2" title="下架商品">
+          {{# } else { }}
+          <input type="radio" name="status" value="0" title="待上架">
+          <input type="radio" name="status" value="1" title="上架商品">
+          <input type="radio" name="status" value="2" title="下架商品" checked>
+          {{# } }}
+
+        </script>
+
+
+
+      </div>
+    </div>
+
+    <script type="text/html" template>
+      <input type="hidden" name="id" value="{{ d.params.id || '' }}">
+    </script>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <div class="layui-input-inline">
+        <input type="button" lay-submit lay-filter="shop-list-set-submit" value="确认" class="layui-btn">
+      </div>
+    </div>
+  </div>
+  <script>
+    layui.use(['form', 'jquery', 'admin', 'upload'], function () {
+      var $ = layui.$
+              ,admin = layui.admin
+              ,view = layui.view
+              ,table = layui.table
+              ,form = layui.form;
+      console.log("position");
+
+
+      form.on("submit(shop-list-set-submit)", function(obj) {
+        var data = obj.field;
+        var type = data.type == "on" ? "1"   : "0";
+        data.type = type;
+        console.log(data);
+
+        admin.req({
+          url: '/api/shop/setProductsPosition'
+          , type: "post"
+          , headers: {
+            token: layui.data('layuiAdmin').token
+          }
+          , data: data
+          , success: function (res) {
+            if (res.code == 0) {
+              table.reload('LAY-app-content-list');
+            }
+            layer.closeAll();
+          }
+        });
+      })
+
+
+
+    });
+  </script>

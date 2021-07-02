@@ -1,0 +1,66 @@
+<!--<script type="text/html" template>-->
+
+<!--{{ JSON.stringify(d.params) }}-->
+<!--{{ JSON.stringify(d.params.type) }}-->
+<!--{{ d.params.type == "分配驻场老师" || "分配工厂HR" }}-->
+<!--</script>-->
+
+<div class="layui-form-item">
+    <script type="text/html" template>
+
+        <input id="params" name="params" hidden value="{{ d.params.id }}">
+        <fieldset class="layui-elem-field layui-field-title">
+
+            <legend>{{ d.params.factory_name || ""}}</legend>
+        </fieldset>
+    </script>
+</div>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-useradminrole-formlist">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <select name="uid" id="uid" lay-search="uid" lay-filter="uid">
+                        <option value="">搜索用户</option>
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <script type="text/html" template="">
+                        <button class="layui-btn factory-allot" type="submit" class="layui-btn" lay-submit="" lay-filter="allotTeacherAdd" style="width: 100%">添加</button>
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+
+            <table class="layui-hide" id="LAY-factory-allot-list" lay-filter="LAY-factory-allot-list"></table>
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.info.avatar }}>
+            </script>
+            <script type="text/html" id="usernameTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.info.username || d.info.phone}}</label>
+            </script>
+            <script type="text/html" id="create_timeTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.create_time || ""}}</label>
+            </script>
+            <script type="text/html" id="update_timeTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.update_time || ""}}</label>
+            </script>
+            <script type="text/html" id="idTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.info.id}}</label>
+            </script>
+            <script type="text/html" id="scoreTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.score }}</label>
+            </script>
+
+            <script type="text/html" id="LAY-factory-allot-toolbar-tages">
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-filter="factory-allot-del" lay-event="factory-allot-del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    layui.use('allot', layui.factory('allot'));
+</script>

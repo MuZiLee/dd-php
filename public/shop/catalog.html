@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="商城" http-equiv="keywords">
+<meta name="description" content="商城,购物">
+<meta name="format-detection" content="telephone=no"><!-- 禁止IPHONE识别手机号码 -->
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>颜文明体育用品微商城</title>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+
+<!-- public_css -->
+<link rel="stylesheet" type="text/css" href="css/public/public_lib.css">
+
+<!-- zy_public_css -->
+<link rel="stylesheet" type="text/css" href="css/zy_public.css">
+<!-- 分类、品牌、店铺css -->
+<link rel="stylesheet" type="text/css" href="css/catalog.css">
+
+<!-- js -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!-- 懒加载js -->
+
+</head>
+<body>
+<header class="zy_search_top_box">
+	<div class="zy_search_top fix">
+		<div class="one" href="javascript:" onclick="history.back();"><img src="images/back_jt.png"></div>
+		<div class="box">
+			<span><img src="images/icon_search.png"/></span>
+		    <input type="text" placeholder="新品上市" value="" />
+	    </div>
+	    <div class="r">
+	    	<span>分类</span>
+	    	<dl>
+	    		<dt></dt>
+	    		<dd><a href="catalog.html">分类</a></dd>
+	    		<dd><a href="brand.html">品牌</a></dd>
+	    		<dd><a href="stores.html">店铺</a></dd>
+	    	</dl>
+	    </div>
+	    <script type="text/javascript">
+			$(function(){
+				$(".zy_search_top .r span").mousedown(
+					function(event){
+						$(".zy_search_top .r dl").fadeToggle()
+						event.stopPropagation();//阻止冒泡
+					}
+				)
+				$("html,body").mousedown(
+					function(){
+						$(".zy_search_top .r dl").fadeOut()
+					}
+				)
+			})
+		</script>
+	</div>
+</header>
+
+<!-- 内容框 -->
+<div class="zy_module-content">
+	<!-- 左边分类栏目 ps：l_left .l_right最好不要用div包裹起不然会有些小问题 -->
+	<div class="l_left" id="con_left">
+	    <!--标题-->
+	    <ul class="job_sub" id="scroller1">
+	        <li class="off" data-cataid="1"><a href="javascript:void(0)">经典鞋</a></li>
+			<li data-cataid="2" class=""><a href="javascript:void(0)">男鞋</a></li>
+			<li data-cataid="3" class=""><a href="javascript:void(0)">女鞋</a></li>
+			<li data-cataid="4" class=""><a href="javascript:void(0)">男装</a></li>
+			<li data-cataid="5" class=""><a href="javascript:void(0)">女装</a></li>
+			<li data-cataid="6" class=""><a href="javascript:void(0)">儿童</a></li>
+			<li data-cataid="7" class=""><a href="javascript:void(0)">体育用品</a></li>
+			<li data-cataid="8" class=""><a href="javascript:void(0)">体育器材</a></li>
+			<li data-cataid="9" class=""><a href="javascript:void(0)">配件专区</a></li>
+			<li data-cataid="10" class=""><a href="javascript:void(0)">往下分类</a></li>
+			<li data-cataid="11" class=""><a href="javascript:void(0)">如有分类</a></li>
+			<li data-cataid="12" class=""><a href="javascript:void(0)">就往下分</a></li>
+			<li data-cataid="13" class=""><a href="javascript:void(0)">字不要多</a></li>
+			<li data-cataid="14" class=""><a href="javascript:void(0)">四个就够</a></li>
+		</ul>
+	</div>
+	<!-- 设置 .l-left .l_right 的top值-->
+	<script type="text/javascript">
+		$(function(){
+			var h=$(".zy_search_top_box").height();
+			$("#con_left,#con_right").css("top",h);
+		})
+	</script>
+	<!-- content 右边产品图-->
+	<div class="l_right" id="con_right">
+	    <div class="rightBox" id="scroller" >
+			<!-- 二级  -->
+			<div class="fr_ite fr_ite_1" data-cataid="1">
+				<!-- 二级数据显示 -->
+				<div class="sub_ites">
+					<span>经典鞋</span>
+				</div>
+				<!-- 三级显示 -->						
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+
+	        <div class="fr_ite fr_ite_2" data-cataid="2">
+				<!-- 二级数据显示 -->
+				<div class="sub_ites">
+					<span>男鞋</span>
+				</div>
+				<!-- 三级显示 -->						
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+
+	        <div class="fr_ite fr_ite_3" data-cataid="3">
+				<!-- 二级数据显示 -->
+				<div class="sub_ites">
+					<span>女鞋</span>
+				</div>
+				<!-- 三级显示 -->						
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+
+	        <div class="fr_ite fr_ite_10" data-cataid="10">
+				<!-- 二级数据显示 -->
+				<div class="sub_ites">
+					<span>标题</span>
+				</div>
+				<!-- 三级显示 -->						
+	            <ul>
+	                <li>
+	                	<a href="category.html">
+	                       <img class="img_lazy" data-original="images/pic02.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典篮球鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic01.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典跑步鞋</span>
+	                    </a>
+	                </li>
+	                <li>
+	                	<a href="category.html">
+	                        <img class="img_lazy" data-original="images/pic08.jpg" src="images/loaderror.jpg"><br>
+	                        <span>经典休闲鞋</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+	        <!-- 二级end -->
+			
+
+	    </div>
+	    <!-- rightBox -->
+	</div>
+	<!-- content end -->
+		
+		
+	<!-- 底部导航 -->
+	<div class="foot_menu">
+		<ul>
+			<li>
+				<a href="index.html">
+					<i><img src="images/menu_icon01.png"></i>
+					<span>首 页</span>
+				</a>
+			</li>
+			<li class="cur">
+				<a href="catalog.html">
+					<i><img src="images/menu_icon02_r.png"></i>
+					<span>分 类</span>
+				</a>
+			</li>
+			<li class="gwc">
+				<a href="flow.html">
+					<i><img src="images/menu_icon03.png"></i>
+					<span>购物车</span>
+					<em>3</em>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	$(function(){
+		$(".zy_search_top .box").mousedown(
+			function(){
+				$(".search_bomb_box").show()
+				$(".zy_search_top_box").hide()			
+				$(".zy_module-content").hide()
+			}
+		)
+		$(".search_bomb_box .search_top>a").mousedown(
+			function(){
+				$(".search_bomb_box").hide()
+				$(".zy_search_top_box").show()		
+				$(".zy_module-content").show()
+			}
+		)
+	})
+</script>
+
+<!-- 分类滑动 js 为了不影响其他js的正常，这几个放在最低下-->
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+	var myScroll,myScrollri;
+	var $ulLeft;var cataId = 0;
+	
+	function pullUpAction () {
+		setTimeout(function () {
+			myScrollri.refresh();
+		}, 500);
+	}
+	
+	function init_left_li(){
+		var total_hei = $ulLeft.height();//总高度
+		var li_height = $ulLeft.find("li").height();//单个li高度
+		var li_num = $ulLeft.find("li").length;//个数
+		console.log($ulLeft.find(".off").offset().top);
+	}
+	/**
+	 * 初始化iScroll控件
+	 */
+	function loaded() {
+		$ulLeft = $("#con_left");
+		myScroll = new IScroll("#con_left",{
+			mouseWheel: true,
+			click: true,
+			preventDefault: false,
+			preventDefaultException: { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|A)$/ }
+		})
+		myScrollri = new IScroll("#con_right",{
+			mouseWheel: true, click: true
+		})
+		myScrollri.on("scrollStart",function(){
+			pullUpAction();
+		});
+		myScrollri.on("scroll",function(){
+			pullUpAction();
+		});
+		myScrollri.on("scrollEnd",function(){
+			$('.fr_ite_'+cataId).find("img").lazyload({
+			   threshold: 200
+			}).on('load', function() {
+				 pullUpAction();
+		    });
+		});
+		$('.job_sub li').eq(0).click();
+	}
+	//初始化绑定iScroll控件 
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('DOMContentLoaded', loaded, false);
+	
+   /* 切换内容*/
+   $(function(){
+  	$('.job_sub li').click(function(){
+        $(this).addClass('off').siblings().removeClass('off');
+        var str = "#con_left li:nth-child("+($(this).index()+1)+")";
+        setTimeout(function () {
+        	myScroll.scrollToElement(document.querySelector(str));
+        }, 300);
+        cataId = $(this).attr("data-cataId");
+        $('.fr_ite_'+$(this).attr("data-cataId")).removeClass('disp').siblings().addClass('disp');
+        /* $('.fr_ite_'+$(this).attr("data-cataId")).find("img").lazyload({effect: "fadeIn"}); */
+        pullUpAction();
+        myScrollri.scrollTo(0,0,100, IScroll.utils.ease.elastic);
+        /* myScrollri = new IScroll("#con_right",{
+			mouseWheel: true, click: true
+		}) */
+    });
+  	$(".fr_ite ul").each(function(){
+    	if($(this).find("li").length == 1){
+    		$(this).addClass("left_num1");
+    	}else if($(this).find("li").length == 2){
+    		$(this).addClass("left_num2");
+    	}
+    })
+    $(".img_lazy").lazyload({effect: "fadeIn"});
+   });
+</script>
+
+</body>
+</html>

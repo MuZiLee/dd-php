@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="商城" http-equiv="keywords">
+<meta name="description" content="商城,购物">
+<meta name="format-detection" content="telephone=no"><!-- 禁止IPHONE识别手机号码 -->
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>颜文明体育用品微商城</title>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+
+<!-- public_css -->
+<link rel="stylesheet" type="text/css" href="css/public/public_lib.css">
+
+<!-- zy_public_css -->
+<link rel="stylesheet" type="text/css" href="css/zy_public.css">
+<!-- vip css -->
+<link rel="stylesheet" type="text/css" href="css/zy_vip.css">
+
+<!-- js -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+
+<!-- js——public -->
+<script type="text/javascript" src="js/public.js"></script>
+
+</head>
+<body>
+<header class="zy_search_top_box vip_top_box">
+	<div class="zy_title_top fix">
+		<div class="one" href="javascript:" onclick="history.back();"><img src="images/back_jt.png"></div>
+		<h1>我的留言</h1>
+	    <div class="r">
+	    	<span><img src="images/web/zy_icon_menu.png"></span>
+	    	<dl>
+	    		<dt></dt>
+	    		<dd><i><img src="images/menu_icon01.png"></i><a href="index.html">首页</a></dd>
+	    		<dd><i><img src="images/menu_icon02.png"></i><a href="catalog.html">分类</a></dd>
+	    		<dd><i><img src="images/menu_icon03.png"></i><a href="flow.html">购物车</a></dd>
+	    		<dd><i><img src="images/menu_icon04.png"></i><a href="user.html">会员中心</a></dd>
+	    	</dl>
+	    </div>
+	    <script type="text/javascript">
+			$(function(){
+				// $(".zy_title_top .r dl").hide()
+				$(".zy_title_top .r span").mousedown(
+					function(event){
+						$(".zy_title_top .r dl").fadeToggle()
+						event.stopPropagation();//阻止冒泡
+					}
+				)
+				$("html,body").mousedown(
+					function(){
+						$(".zy_title_top .r dl").fadeOut()
+					}
+				)
+			})
+		</script>
+	</div>
+</header>
+<div class="top_zhanwei_box"></div>	
+<script type="text/javascript">
+	$(function(){
+		var top_h=$(".vip_top_box").height()
+		$(".top_zhanwei_box").css("height",top_h)
+	})
+</script>
+<!-- 内容框 -->
+<div class="zy_module-content">	
+	<div class="vip_user_msg">
+		<div class="list_msg">
+			<ul>
+				<li>
+					<h2>
+						<p><span>留言：</span><b>鞋子不错，很好</b></p>
+						<em>2018-08-02</em>
+					</h2>
+					<h3>
+						<p>颜文明的鞋子很不错，我很喜欢，下次还会继续光临的，客服态度很好，送货小哥很有责任心！</p>
+					</h3>
+				</li>
+				<li>
+					<h2>
+						<p><span>留言：</span><b>服务很好</b></p>
+						<em>2018-08-02</em>
+					</h2>
+					<h3>
+						<p>在网上买了这么多东西，感觉你家的服务是最好的</p>
+					</h3>
+				</li>
+				<li>
+					<h2>
+						<p><span>售后：</span><b>更换鞋子</b></p>
+						<em>2018-08-02</em>
+					</h2>
+					<h3>
+						<p>鞋子买大了，更换小码的，服务很好</p>
+					</h3>
+				</li>
+				<li>
+					<h2>
+						<p><span>留言：</span><b>鞋子超赞的</b></p>
+						<em>2018-08-02</em>
+					</h2>
+					<h3>
+						<p>第一次在网上买东西，看着这鞋子很漂亮很喜欢就买了，到货了打开看鞋子超赞的！棒棒哒！！！</p>
+					</h3>
+				</li>
+			</ul>
+			<div class="zy_fanye">
+				<a href="#">上一页</a>
+				<span>
+					<em>1</em>/<i>2</i>
+					<select>
+						<option>第1页</option>
+						<option>第2页</option>
+					</select>
+				</span>
+				<a href="#">下一页</a>
+			</div>
+		</div>
+		<form>
+			<div class="one">
+				<div class="zy_title_con">
+					<h2><span>留言类型<i></i></span></h2>
+				</div>
+				<div class="leixing">
+					<label><input type="radio" name="leixing" checked="checked">留言</label>
+					<label><input type="radio" name="leixing">投诉</label>
+					<label><input type="radio" name="leixing">询问</label>
+					<label><input type="radio" name="leixing">售后</label>
+					<label><input type="radio" name="leixing">求购</label>
+				</div>
+			</div>
+			<div class="two">
+				<div class="zy_title_con">
+					<h2><span>留言主题<i></i></span></h2>
+				</div>
+				<label><input type="text" name=""></label>
+			</div>
+			<div class="three">
+				<div class="zy_title_con">
+					<h2><span>留言内容<i></i></span></h2>
+				</div>
+				<textarea></textarea>
+			</div>
+			<button>提交留言</button>
+		</form>
+	</div>
+	<!-- 底部 -->
+	<div class="footer_box vip_footer_box">
+		<div class="footer">
+			<h2>
+				<a href="login.html">登录</a><!-- 
+			 --><a href="register.html">注册</a><!-- 
+			 --><a href="supplier-privilege.html">商家中心</a><!-- 
+			 --><a href="about_mdcx.html">门店查询</a>
+			</h2>
+			<h3>
+				<span><a href="about.html">关于我们</a></span>
+				<span><a href="about.html">购物指南</a></span>
+				<span><a href="about.html">支付方式</a></span>
+				<span><a href="about.html">售后服务</a></span>
+			</h3>
+			<div class="txt">
+				<p>Copyright © 2018  贵州颜文明体育用品有限公司</p>
+				<p>联系地址：贵州省清镇市巢东路9号颜文明大厦</p>
+				<p>全国服务热线：400-6679-555&nbsp;&nbsp;&nbsp;技术支持：<a href="https://www.wangid.com" target="blank" style="color: #999;">WangID驰通网络</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

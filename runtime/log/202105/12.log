@@ -1,0 +1,260 @@
+---------------------------------------------------------------
+
+[2021-05-12T09:15:35+08:00] 192.168.1.89 GET one.com/
+[运行时间：0.111656s] [吞吐率：8.96req/s] [内存消耗：2,865.00kb] [文件加载：70]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'one.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'purpose' => 'prefetch',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+
+[2021-05-12T09:15:36+08:00] 192.168.1.89 GET one.com/api/admin/menu?v=1.4.0%20pro&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw
+[运行时间：0.195912s] [吞吐率：5.10req/s] [内存消耗：4,965.77kb] [文件加载：98]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/admin/menu',
+  'route' => 'index/Index/menu',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'one.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'referer' => 'http://one.com/admin/start/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'v' => '1.4.0 pro',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006096s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.019903s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.006929s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.001328s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_type` [ RunTime:0.001309s ]
+[ sql ] [ SQL ] SELECT `dd_roles_type`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`rid` AS `pivot__rid`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time`,`pivot`.`title` AS `pivot__title` FROM `dd_roles_type` INNER JOIN `dd_roles_pivot` `pivot` ON `pivot`.`rid`=`dd_roles_type`.`id` WHERE  `pivot`.`uid` = 5 ORDER BY `rid` ASC [ RunTime:0.004156s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_partner_pivot` [ RunTime:0.001889s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_partner_pivot` WHERE  `uid` = 5 LIMIT 1 [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_strategic_alliance` [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_teacher` [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_basic_information` [ RunTime:0.002275s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_teacher` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_hr` [ RunTime:0.001327s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_hr` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_staff` [ RunTime:0.000697s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_staff` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_signing_information` [ RunTime:0.000928s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 5 LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 4 LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 3 LIMIT 1 [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 2 LIMIT 1 [ RunTime:0.000244s ]
+---------------------------------------------------------------
+
+[2021-05-12T09:15:36+08:00] 192.168.1.89 GET one.com/api/admin/welcome?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw
+[运行时间：0.152399s] [吞吐率：6.56req/s] [内存消耗：4,683.63kb] [文件加载：97]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/admin/welcome',
+  'route' => 'index/Index/welcome',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'one.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'referer' => 'http://one.com/admin/start/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000753s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.009648s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dd_users` [ RunTime:0.005454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_staff` [ RunTime:0.001574s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dd_factory_staff` WHERE  `status` = 1 [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dd_factory_staff` WHERE  `status` = 0 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.002006s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dd_roles_pivot` WHERE  `rid` = 4 [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dd_roles_pivot` WHERE  `rid` = 5 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_strategic_alliance` [ RunTime:0.001388s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dd_strategic_alliance` [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_events_pay_slip_epfew` [ RunTime:0.002381s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_epfew` [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_events_pay_slip_hourly_worker` [ RunTime:0.001334s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_hourly_worker` [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_events_staff` [ RunTime:0.002126s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_staff` WHERE  `etid` = 12  AND `status` = 1 [ RunTime:0.000453s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_hourly_worker` WHERE  `status` = 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_epfew` WHERE  `status` = 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_events_pay_slip_agent` [ RunTime:0.001254s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_agent` WHERE  `status` = 1 [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_epfew` [ RunTime:0.000241s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_hourly_worker` [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_wallet_virtual_logs` [ RunTime:0.001147s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_wallet_virtual_logs` WHERE  `tid` = 19 [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_sign_in` [ RunTime:0.000867s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_sign_in` [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_wallet_virtual_logs` WHERE  `tid` = 19 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_epfew` [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_hourly_worker` [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_epfew` [ RunTime:0.000219s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_hourly_worker` [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_epfew` [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_events_pay_slip_hourly_worker` [ RunTime:0.000211s ]
+---------------------------------------------------------------
+
+[2021-05-12T09:15:36+08:00] 192.168.1.89 GET one.com/api/account/getInfoByToken?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw
+[运行时间：0.194587s] [吞吐率：5.14req/s] [内存消耗：5,066.71kb] [文件加载：100]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/account/getInfoByToken',
+  'route' => 'index/Account/getInfoByToken',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'one.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'referer' => 'http://one.com/admin/start/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006077s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.019897s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.007030s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.001315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_type` [ RunTime:0.001303s ]
+[ sql ] [ SQL ] SELECT `dd_roles_type`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`rid` AS `pivot__rid`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time`,`pivot`.`title` AS `pivot__title` FROM `dd_roles_type` INNER JOIN `dd_roles_pivot` `pivot` ON `pivot`.`rid`=`dd_roles_type`.`id` WHERE  `pivot`.`uid` = 5 ORDER BY `rid` ASC [ RunTime:0.004164s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_partner_pivot` [ RunTime:0.001964s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_partner_pivot` WHERE  `uid` = 5 LIMIT 1 [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_strategic_alliance` [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 [ RunTime:0.000292s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_teacher` [ RunTime:0.000938s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_basic_information` [ RunTime:0.002289s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_teacher` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_hr` [ RunTime:0.001346s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_hr` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_staff` [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_staff` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_signing_information` [ RunTime:0.000992s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 5 LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 4 LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 3 LIMIT 1 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 2 LIMIT 1 [ RunTime:0.000238s ]
+---------------------------------------------------------------
+
+[2021-05-12T09:15:36+08:00] 192.168.1.89 POST one.com/api/account/getInfoByToken
+[运行时间：0.148890s] [吞吐率：6.72req/s] [内存消耗：5,066.66kb] [文件加载：100]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/account/getInfoByToken',
+  'route' => 'index/Account/getInfoByToken',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'one.com',
+  'connection' => 'keep-alive',
+  'content-length' => '89',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'origin' => 'http://one.com',
+  'referer' => 'http://one.com/admin/start/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000693s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.007022s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.001322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_type` [ RunTime:0.001291s ]
+[ sql ] [ SQL ] SELECT `dd_roles_type`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`rid` AS `pivot__rid`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time`,`pivot`.`title` AS `pivot__title` FROM `dd_roles_type` INNER JOIN `dd_roles_pivot` `pivot` ON `pivot`.`rid`=`dd_roles_type`.`id` WHERE  `pivot`.`uid` = 5 ORDER BY `rid` ASC [ RunTime:0.004164s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_partner_pivot` [ RunTime:0.001891s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_partner_pivot` WHERE  `uid` = 5 LIMIT 1 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_strategic_alliance` [ RunTime:0.000558s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 [ RunTime:0.000292s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_teacher` [ RunTime:0.000962s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_basic_information` [ RunTime:0.002244s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_teacher` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000316s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_hr` [ RunTime:0.001343s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_hr` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_staff` [ RunTime:0.000723s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_staff` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_signing_information` [ RunTime:0.000984s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 5 LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 4 LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 3 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 2 LIMIT 1 [ RunTime:0.000225s ]

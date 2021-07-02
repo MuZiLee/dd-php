@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="商城" http-equiv="keywords">
+<meta name="description" content="商城,购物">
+<meta name="format-detection" content="telephone=no"><!-- 禁止IPHONE识别手机号码 -->
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>商品详情</title>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+
+<!-- public_css -->
+<link rel="stylesheet" type="text/css" href="css/public/public_lib.css">
+
+<!-- zy_public_css -->
+<link rel="stylesheet" type="text/css" href="css/zy_public.css">
+<!-- 分类、品牌、店铺css -->
+<link rel="stylesheet" type="text/css" href="css/zy_main.css">
+
+<!-- js -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+
+<!-- js——public -->
+<script type="text/javascript" src="js/public.js"></script>
+
+</head>
+<body>
+
+
+
+<!-- 内容框 -->
+<div class="zy_module-content">
+	<form>
+		<div class="swiper-container goods_big_box">
+
+			<div class="swiper-wrapper">
+				<div class="swiper-slide zy_goods_spbox">
+					<!--wrapper图-->
+				    <div class="swiper-container xq_goods_pic _picbox_w_h">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<img src="images/big_5.jpg">
+							</li>
+							<li class="swiper-slide">
+								<img src="images/pic08.jpg">
+							</li>
+							<li class="swiper-slide">
+								<img src="images/big_5.jpg">
+							</li>
+							<li class="swiper-slide">
+								<img src="images/pic08.jpg">
+							</li>
+						</ul>
+						<div class="swiper-pagination sp01"></div>
+						<script>
+						    var swiper = new Swiper('.xq_goods_pic', {
+						        pagination: '.sp01',
+						        paginationClickable: true,
+						        autoplay:false,
+						        speed:500,
+						        autoplayDisableOnInteraction : false,
+						    });
+					    </script>
+				    </div>
+
+				    <div class="xq_goods_title mb6">
+                        <h2></h2>
+				    	<h2>2018年颜文明旗舰店春季新款女头层牛皮经典复古男休闲运动网球鞋</h2>
+				    	<p><a>￥498.00</a><a>蛋币498.00</a><span>市场价：￥699.00</span></p>
+						<h3></h3>
+				    </div>
+
+				    <!-- 详情图 -->
+				    <div class="goods_xq_miaosu bgwh">
+				    	<div class="zy_title_con_01">
+							<h2><span>商品详情</span></h2>
+						</div>
+						<div>
+							<img src="images/goods_xqpic.jpg">
+							<img src="images/big_5.jpg">
+							<img src="images/pic01.jpg">
+						</div>
+				    </div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+		    <!-- 弹框预览图片 -->
+			<div class="swiper-container xq_goods_pic_Bomb">
+		        <div class="swiper-wrapper _picbox_w_h1">
+		            <div class="swiper-slide"><img src="images/big_5.jpg"></div>
+		            <div class="swiper-slide"><img src="images/pic01.jpg"></div>
+		            <div class="swiper-slide"><img src="images/big_5.jpg"></div>
+		            <div class="swiper-slide"><img src="images/pic01.jpg"></div>
+		        </div>
+		        <!-- Add Pagination -->
+		        <div class="swiper-pagination bomb_page"></div>
+		    </div>
+
+		    <!-- Initialize Swiper -->
+		    <script>
+			    var swiper = new Swiper('.xq_goods_pic_Bomb', {
+			        pagination: '.bomb_page',
+			        paginationType: 'fraction'
+			    });
+
+			    $(function(){
+			    	$(".xq_goods_pic_Bomb").hide()
+			    	$(".xq_goods_pic").mousedown(
+			    		function(){
+			    			$(".xq_goods_pic_Bomb").show().css('height','100%')
+			    		}
+			    	)
+
+			    	$(".xq_goods_pic_Bomb").mousedown(
+			    		function(){
+			    			$(this).hide()
+			    		}
+			    	)
+			    })
+		    </script>
+
+
+
+		</div>
+    </form>
+	
+	<!-- 返回顶部 -->
+	<div class="go_top">
+		<a class="btn_top"></a>
+	</div>
+	<script type="text/javascript">
+        $(function(){
+			window.onscroll=function(){
+			var autoheight=document.body.scrollTop||document.documentElement.scrollTop;
+			if(autoheight>100){
+				$(".go_top").fadeIn()
+				}else{
+					$(".go_top").fadeOut()
+				}
+			}
+			$(".btn_top").mousedown(
+				function(){
+					$("html, body").animate({"scroll-top":0},"fast");
+				}
+			)
+		})
+    </script>
+
+
+</div>
+
+
+</body>
+</html>

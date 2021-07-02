@@ -1,0 +1,74 @@
+
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+                    <table class="layui-hide" id="LAY-logsTpl-list" lay-filter="LAY-logsTpl-list"></table>
+
+
+                    <!--id-->
+                    <script type="text/html" id="idTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.id || ""}}</label>
+                    </script>
+                    <!--img-->
+                    <script type="text/html" id="imgTpl">
+                        <img style="display: inline-block; width: 32px; height: 32px" src='{{ d.user.avatar  || ""}}'>
+                    </script>
+                    <!--username-->
+                    <script type="text/html" id="usernameTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.username ||
+                            ""}}</label>
+                    </script>
+                    <!--phone-->
+                    <script type="text/html" id="phoneTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.phone ||
+                            ""}}</label>
+                    </script>
+                    <!--role-->
+                    <script type="text/html" id="roleTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.role.title ||
+                            ""}}</label>
+                    </script>
+                    <!--partnerNameTpl-->
+                    <script type="text/html" id="partnerNameTpl">
+                        {{# if(d.user.partner){}}
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.partner ?
+                            d.user.partner.username : ""}}</label>
+                        {{# } }}
+
+                    </script>
+                    <!--groeTpl-->
+                    <script type="text/html" id="groeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.groe || 0}}人</label>
+                    </script>
+                    <!--enterpriseTpl-->
+                    <script type="text/html" id="enterpriseTpl">
+                        {{#if(d.user.partner){}}
+                        <span class="layui-badge layui-bg-blue">{{ d.user.partner ? d.user.partner.enterprise.name : ""}}</span>
+                        {{#}}}
+
+                    </script>
+                    <!--create_time-->
+                    <script type="text/html" id="createTimeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.create_time ||
+                            ""}}</label>
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    layui.use('logsTpl', layui.factory('logsTpl')).use(['logsTpl'], function(){
+
+    });
+
+</script>

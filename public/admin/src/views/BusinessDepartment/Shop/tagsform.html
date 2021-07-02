@@ -1,0 +1,131 @@
+
+
+<div class="layui-form" lay-filter="layuiadmin-form-tags" id="layuiadmin-app-form-tags">
+  <script type="text/html" template="">
+    {{# if(d.params.id){ }}
+    <input type="hidden" id="id" name="id" value="{{ d.params.id}}">
+    {{# } }}
+    {{# if(d.params.image){ }}
+    <input type="hidden" name="image" value="{{ d.params.image}}">
+    {{# } }}
+  </script>
+
+
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">分类名</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="name" value="{{ d.params.name || '' }}" lay-verify="required" placeholder="请输入..." autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item layui-upload">
+    <button type="button" class="layui-btn" id="imageAction">上传图片</button>
+    <div class="layui-upload-list">
+      <script type="text/html" template="">
+        <img class="layui-upload-img" id="image" name="image" src="{{d.params.image || ''}}" style="max-height: 200px; max-width: 200px">
+      </script>
+      <p id="imageTitle" style="color: red"></p>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <input type="button" lay-submit lay-filter="layuiadmin-app-tags-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</div>
+
+<script>
+  layui.use(['form', 'jquery', 'admin', 'upload'], function () {
+
+    var admin = layui.admin;
+    var form = layui.form;
+    var $ = layui.jquery;
+    var upload = layui.upload;
+
+    form.render(null, 'layuiadmin-form-tags');
+
+    // 图片上传
+    var image = "";
+    $(function() {
+      //普通图片上传
+      var uploadInst = upload.render({
+        elem: "#imageAction"
+        , url: "/api/upload/one" //改成您自己的上传接口
+        , accept: "image"
+        , headers: { //通过 request 头传递
+          token: layui.data("layuiAdmin").token
+        }
+        , before: function(obj) {
+          //预读本地文件示例，不支持ie8
+          obj.preview(function(index, file, result) {
+            $("#image").attr("src", result); //图片链接（base64）
+          });
+        }
+        , done: function(res) {
+          //如果上传失败
+          if(res.code > 0) {
+            return layer.msg("上传失败");
+          }
+          //上传成功
+          image = res.data.url;
+          $("#image").attr("src", res.data.url); //图片链接（base64）
+        }
+        , error: function() {
+          //演示失败状态，并实现重传
+          var demoText = $("#imageTitle");
+          demoText.html("<span style=\"color: #FF5722;\">上传失败</span> <a class=\"layui-btn layui-btn-xs demo-reload\">重试</a>");
+          demoText.find(".demo-reload").on("click", function() {
+            uploadInst.upload();
+          });
+        }
+      });
+
+
+    });
+
+    //监听提交
+    form.on('submit(layuiadmin-app-tags-submit)', function(data){
+      var field = data.field; //获取提交的字段
+      if (!field.image) {
+        field.image = image;
+      } else  {
+        if (image) {
+          field.image = image;
+        }
+      }
+
+      console.log(field);
+
+      if (!field.image) {
+        layer.msg("未上传图片");
+        return;
+      }
+
+      admin.req({
+        url: "/api/shop/saveCategory"
+        , type: "post"
+        , data: field
+        , headers: {
+          token: layui.data('layuiAdmin').token
+        }
+        , success(res) {
+          if(res.code == 0) {
+            //提交 Ajax 成功后，关闭当前弹层并重载表格
+            //$.ajax({});
+            layui.table.reload('LAY-app-content-tags'); //重载表格
+            layer.closeAll(); //执行关闭
+          }
+        }
+      });
+
+
+    });
+
+
+  });
+
+</script>

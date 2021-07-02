@@ -1,0 +1,133 @@
+
+
+<title>工单系统</title>
+  
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>人事部</cite></a>
+    <a><cite>工单系统</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">  
+  <div class="layui-card">
+
+    <script type="text/html" template="">
+      {{ JSON.stringify(d.params) }}
+      <input type="hidden" id="id" name="id" value="{{ d.params.id }}">
+    </script>
+    <div class="layui-card-body">
+      <table id="LAY-app-workorder" lay-filter="LAY-app-workorder"></table> 
+      <script type="text/html" id="progressTpl">
+        <div class="layui-progress layuiadmin-order-progress" lay-filter="progress-"+ {{ d.orderid }} +"">
+          <div class="layui-progress-bar layui-bg-blue" lay-percent= {{ d.progress }}></div>
+        </div>
+      </script>
+      <script type="text/html" id="buttonTpl">
+        {{#  if(d.state == '已处理'){ }}
+          <button class="layui-btn layui-btn-normal layui-btn-xs">已处理</button>
+        {{#  } else if(d.state == '未分配'){ }}
+          <button class="layui-btn layui-btn-primary layui-btn-xs">未分配</button>
+        {{#  } else{ }}
+          <button class="layui-btn layui-btn-warm layui-btn-xs">处理中</button>
+        {{#  } }}
+      </script>
+
+    </div>
+  </div>
+</div>
+
+<script>
+layui.use('admin', layui.factory('admin')).use(['admin', 'form', 'table'], function(){
+  var $ = layui.$
+          ,admin = layui.admin
+          ,view = layui.view
+          ,table = layui.table
+          ,form = layui.form
+          ,element = layui.element;
+
+  var movingTimer = setTimeout(function(){
+    console.log($("#id").val());
+  }, 200);
+
+
+  /**
+   * 我希望可以在这里获取到我传入来的 logs,应该如何获取呢？
+   * 我试图使用控件隐藏来保存数据，但显然这不是一个好方法
+   */
+  /// TODO: logs 数组渲染
+
+
+
+
+  form.render(null, 'app-content-workorder');
+  
+  //监听搜索
+  form.on('submit(LAY-app-order-search)', function(data){
+    var field = data.field;
+    
+    //执行重载
+    table.reload('LAY-app-workorder', {
+      where: field
+    });
+  });
+
+
+//执行渲染
+  // table.reload('LAY-app-workorder', {
+  //     where: obj.data.logs
+  // });
+
+  table.render({
+    elem: '#LAY-app-workorder'
+    ,cols: [[
+      {type: 'numbers', fixed: 'left'}
+      ,{field: 'orderid', width: 100, title: '工单号', sort: true}
+      ,{field: 'attr', width: 100, title: '业务性质'}
+      ,{field: 'title', width: 100, title: '工单标题', width: 300}
+      ,{field: 'progress', title: '进度', width: 200, align: 'center', templet: '#progressTpl'}
+      ,{field: 'submit', width: 100, title: '提交者'}
+      ,{field: 'accept', width: 100, title: '受理人员'}
+      ,{field: 'state', title: '工单状态', templet: '#buttonTpl', minWidth: 80, align: 'center'}
+      ,{title: '操作', align: 'center', fixed: 'right', toolbar: '#table-system-order'}
+    ]]
+    ,page: true
+    ,limit: 10
+    ,limits: [10, 15, 20, 25, 30]
+    ,text: '对不起，加载出现异常！'
+    ,done: function(){
+      element.render('progress');
+    }
+  });
+
+  //监听工具条
+  table.on('tool(LAY-app-workorder)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'edit'){
+      admin.popup({
+        title: '编辑工单'
+        ,area: ['450px', '450px']
+        ,id: 'LAY-popup-workorder-add'
+        ,success: function(layero, index){
+          view(this.id).render('app/workorder/listform').done(function(){
+            form.render(null, 'layuiadmin-form-workorder');
+
+            //监听提交
+            form.on('submit(LAY-app-workorder-submit)', function(data){
+              var field = data.field; //获取提交的字段
+
+              //提交 Ajax 成功后，关闭当前弹层并重载表格
+              //$.ajax({});
+              layui.table.reload('LAY-app-workorder'); //重载表格
+              layer.close(index); //执行关闭
+            });
+          });
+        }
+      });
+    }
+  });
+
+
+});
+</script>

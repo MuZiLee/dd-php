@@ -1,0 +1,82 @@
+<title>用户管理</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>用户管理</cite></a>
+        <a><cite>黑名单列表</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+            <!--<div style="padding-bottom: 10px;">-->
+            <!--<button class="layui-btn layuiadmin-btn-useradmin" data-type="batchdel">删除</button>-->
+            <!--<button class="layui-btn layuiadmin-btn-useradmin" data-type="add">添加</button>-->
+            <!--</div>-->
+
+            <table id="LAY-black-list" lay-filter="LAY-black-list"></table>
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.avatar }}>
+            </script>
+            <script type="text/html" id="table-user-tages">
+                <a class="layui-btn layui-btn-normal layui-bg-black layui-btn-xs" lay-event="unblack"><i class="layui-icon layui-icon-password"></i>解禁</a>
+<!--                <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="look"><i class="layui-icon layui-icon-search"></i>查看</a>-->
+            </script>
+        </div>
+    </div>
+</div>
+
+<!--ID-->
+<script type="text/html" id="idTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.id || ""}}</label>
+</script>
+<!--用户名-->
+<script type="text/html" id="usernameTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.username || " "}}</label>
+</script>
+<!--手机号-->
+<script type="text/html" id="phoneTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.phone || " "}}</label>
+</script>
+<!--邀请码-->
+<script type="text/html" id="codeTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.code || " "}}</label>
+</script>
+<!--上级-->
+<script type="text/html" id="partnerTpl">
+    {{# if(d.partner){ }}
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.partner.user.username || " "}}</label>
+    {{# } }}
+</script>
+<!--所属战略-->
+<script type="text/html" id="strategicTpl">
+    {{# if(d.partner){ }}
+    {{# if(d.partner.user.strategic){ }}
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.partner.user.strategic.name || " "}}</label>
+    {{# } }}
+    {{# } }}
+</script>
+<!--角色-->
+<script type="text/html" id="rolesTpl">
+
+    {{# $.each(d.roles, function(key, value) { }}
+    {{# '<span class="layui-badge">" + value.title + "</span>' }}
+    {{# }); }}
+</script>
+
+
+<!--}-->
+<!--注册时间-->
+<script type="text/html" id="create_timeTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.create_time || " "}}</label>
+</script>
+
+<script>
+    layui.use('user', layui.factory('user')).use(['admin', 'user', 'table'], function(){
+
+
+    });
+</script>

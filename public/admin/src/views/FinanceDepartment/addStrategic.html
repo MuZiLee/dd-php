@@ -1,0 +1,119 @@
+
+
+
+<script type="text/html" template lay-url="/api/account/getWhitelist" lay-done="layui.data.done(d);">
+    <div class="layui-form" lay-filter="addStrategic-form-role" style="padding: 20px 30px 0 0;">
+
+
+
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">公司名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" placeholder="公司名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户</label>
+            <div class="layui-input-block">
+                <select type="search" name="uid" id="uid" lay-filter="uid"></select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">紧急联系人</label>
+            <div class="layui-input-block">
+                <input type="text" name="sos_name" lay-verify="required" placeholder="紧急联系人" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">紧急联系人电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="sos_phone" lay-verify="required" placeholder="手机号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" name="remark" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <input type="button" lay-submit lay-filter="addStrategic-submit" value="确认" class="layui-btn">
+            </div>
+        </div>
+    </div>
+
+</script>
+
+<script>
+layui.data.done = function(res){
+    //获取到白名单用户
+    console.log(res.data);
+    layui.use(['jquery', 'element', 'layer', 'table', 'admin', 'form'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var table = layui.table;
+
+
+
+        var select_obj = $("#uid");
+        layui.each(res.data, function (index, item) {
+
+            var option = document.createElement("option");
+            option.value = item.id;
+            option.innerHTML = item.username ? item.username : item.phone;
+            option.name = "uid";
+            if (index == 0) {
+                option.selected = true;
+            }
+            select_obj.append(option);
+
+        });
+        form.render("select");
+
+
+
+        form.on('submit(addStrategic-submit)', function(obj){
+            var data = obj.field;
+            data.etid = 4;// 战略联盟申请
+
+            if (!data.uid) {
+                layer.msg("选择合伙用户");
+                return;
+            }
+            console.log(data);
+
+            admin.req({
+                url: '/api/events/adminCreateStrategic'
+                , type: "post"
+                , headers: {
+                    token: layui.data('layuiAdmin').token
+                }
+                , data: data
+                , success: function (res) {
+                    if (res.code == 0) {
+                        table.reload('stategic-list');
+                    }
+                    layer.closeAll();
+                }
+            });
+
+
+            // layui.layer.closeAll();
+            // layui.table.reload("LAY-user-back-role");
+        });
+
+    });
+};
+
+
+</script>

@@ -1,0 +1,67 @@
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <script type="text/html" template lay-done="layui.data.done(d);"></script>
+
+                <div class="layui-card-header">战略联盟</div>
+                <div class="layui-card-body" pad15>
+
+                    <div class="layui-form" lay-filter="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">初级合伙人分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="jp_dividend" name="jp_dividend" value="{{d.params.strategic.jp_dividend}}" readonly>
+                                </script>
+                            </div>
+                            <label>%</label>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">高级合伙人分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="sp_dividend" name="sp_dividend" value="{{d.params.strategic.sp_dividend}}" readonly>
+                                </script>
+                            </div>
+                            <label>%</label>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">战略分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="sa_dividend" name="sa_dividend" value="{{d.params.strategic.sa_dividend}}" readonly>
+                                </script>
+                            </div>
+                            <label>%</label>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">蛋蛋分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="dd_dividend" name="dd_dividend" value="{{d.params.strategic.dd_dividend}}" readonly>
+                                </script>
+                            </div>
+                            <label>%</label>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.data.done = function (d) {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form;
+            var table = layui.table;
+
+
+        });
+    }
+
+</script>

@@ -1,0 +1,170 @@
+<title>工厂与职位管理 - 工厂审核</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>工厂与职位管理</cite></a>
+        <a><cite>工厂审核</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+
+                    <table class="layui-hide" id="LAY-factoryAudit-list" lay-filter="LAY-factoryAudit-list"></table>
+
+
+                    <script type="text/html" id="buttonTpl">
+                        <!--行内事件使用lay-event来监听-->
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="buttonTpl">>迷你按钮</button>
+                    </script>
+
+                    <!--工厂名称-->
+                    <script type="text/html" id="factoryNameTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.factory_name || ""}}</label>
+                    </script>
+                    <!--省-->
+                    <script type="text/html" id="provinceTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.province || ""}}</label>
+                    </script>
+                    <!--市-->
+                    <script type="text/html" id="cityTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.city || ""}}</label>
+                    </script>
+                    <!--市-->
+                    <script type="text/html" id="districtTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.district || ""}}</label>
+                    </script>
+                    <!--地址-->
+                    <script type="text/html" id="addresTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.addres || ""}}</label>
+                    </script>
+
+
+
+                    <!--预算招聘人数-->
+                    <script type="text/html" id="expected_demandTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.information.expected_demand || ""}}</label>
+                    </script>
+
+
+                    <!--跟进人-->
+                    <script type="text/html" id="follow_up_personTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.personnel.follow_up_person || ""}}</label>
+                    </script>
+                    <!--跟进人联系电话-->
+                    <script type="text/html" id="follow_up_person_phoneTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.personnel.follow_up_person_phone || ""}}</label>
+                    </script>
+
+
+                    <!--logo-->
+                    <script type="text/html" id="logoTpl">
+                        <img style="display: inline-block; width: 32px; height: 32px" src='{{ d.factory.logo  || ""}}'>
+                    </script>
+
+
+
+                    <!--signingInformation-->
+                    <!--合作方式-->
+                    <script type="text/html" id="cooperation_modeTpl">
+                        <a class="layui-btn layui-btn-xs layui-bg-blue" lay-event="cooperation_modeTpl">{{ d.factory.signingInformation.cooperation_mode }}</a>
+                    </script>
+                    <!--工资发放方式-->
+                    <script type="text/html" id="salary_payment_methodTpl">
+                        <a class="layui-btn layui-btn-xs layui-bg-blue" lay-event="salary_payment_methodTpl">{{ d.factory.signingInformation.salary_payment_method }}</a>
+                    </script>
+                    <!--签单价-->
+                    <script type="text/html" id="signed_unit_priceTpl">
+                        <a class="layui-btn layui-btn-xs layui-bg-orange" lay-event="signed_unit_priceTpl">{{ d.factory.signingInformation.signed_unit_price }}元</a>
+                    </script>
+                    <!--员工单价-->
+                    <script type="text/html" id="employee_unit_priceTpl">
+                        {{# if(d.factory.signingInformation.cooperation_mode != "代理招聘"){ }}
+                        <a class="layui-btn layui-btn-xs layui-bg-orange" lay-event="employee_unit_priceTpl">{{ d.factory.signingInformation.employee_unit_price }}元</a>
+                        {{# } else { }}
+                        <a></a>
+                        {{# } }}
+                    </script>
+                    <!--教师佣金-->
+                    <script type="text/html" id="commission_for_teacherTpl">
+                        {{# if(d.factory.signingInformation.cooperation_mode == "小时工"){ }}
+                        <a class="layui-btn layui-btn-xs layui-bg-green" lay-event="commission_for_teacherTpl">{{ d.factory.signingInformation.commission_for_teacher }}元</a>
+                        {{# } else { }}
+                        <a class="layui-btn layui-btn-xs layui-bg-green" lay-event="commission_for_teacherTpl">{{ d.factory.signingInformation.commission_for_teacher }}%</a>
+                        {{# } }}
+
+                    </script>
+                    <!--售货员佣金-->
+                    <script type="text/html" id="commission_for_salesmanTpl">
+
+                        {{# if(d.factory.signingInformation.cooperation_mode == "小时工"){ }}
+                        <a class="layui-btn layui-btn-xs layui-bg-green" lay-event="commission_for_salesmanTpl">{{ d.factory.signingInformation.commission_for_salesman }}元</a>
+                        {{# } else { }}
+                        <a class="layui-btn layui-btn-xs layui-bg-green" lay-event="commission_for_salesmanTpl">{{ d.factory.signingInformation.commission_for_salesman }}%</a>
+                        {{# } }}
+                    </script>
+
+
+
+                    <!--keyboarder-->
+                    <!--录入员-->
+                    <script type="text/html" id="keyboarderTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.keyboarder.username || d.factory.keyboarder.phone}}</label>
+                    </script>
+                    <!--创建时间-->
+                    <script type="text/html" id="create_timeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.create_time || ""}}</label>
+                    </script>
+                    <!--税费-->
+                    <script type="text/html" id="income_taxTpl">
+                        <a class="layui-btn layui-btn-xs layui-bg-green" lay-event="income_taxTpl">{{d.factory.signingInformation.income_tax}}元</a>
+                    </script>
+                    <!--signingInformation-保险费-->
+                    <script type="text/html" id="iinsurance_premiumTpl">
+                        {{# if(d.factory.signingInformation.cooperation_mode != "代理招聘"){ }}
+                        <a class="layui-btn layui-btn-xs layui-bg-green" lay-event="iinsurance_premiumTpl">{{d.factory.signingInformation.insurance_premium}}元</a>
+                        {{# } else { }}
+                        <a></a>
+                        {{# } }}
+
+                    </script>
+                    <!--signingInformation-管理费-->
+                    <script type="text/html" id="managerCostTpl">
+                        <a class="layui-btn layui-btn-xs layui-bg-green" lay-event="managerCostTpl">{{d.factory.signingInformation.management_expense}}元</a>
+                    </script>
+
+                    <!--工厂环境图片-->
+                    <script type="text/html" id="imagesTpl">
+                        <a class="layui-btn layui-btn-xs layui-bg-blue" lay-event="seeimages">查看</a>
+                    </script>
+
+                    <script type="text/html" id="LAY-factoryAudit-list-tool-tages">
+                        <a class="layui-btn layui-btn-normal layui-bg-blue layui-btn-xs" lay-event="look">查看</a>
+                    </script>
+
+
+                    <script type="text/html" id="Lay-factoryAudit-list-toolbar">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-green" lay-event="teacher">驻场老师管理</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-orange" lay-event="hr">工厂HR管理</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-event="dispose">审核</button>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    layui.use('factoryAudit', layui.factory('factoryAudit')).use(['factoryAudit'], function(){
+
+    });
+</script>

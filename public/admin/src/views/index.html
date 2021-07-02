@@ -1,0 +1,302 @@
+<style>
+
+    .text-left {
+        text-align: left;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-justify {
+        text-align: justify;
+    }
+
+    .text-nowrap {
+        white-space: nowrap;
+    }
+
+    .widget {
+        border-radius: 5px;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .navy-bg {
+        background-color: #1ab394;
+        color: #ffffff;
+    }
+
+</style>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+
+
+        <script type="text/html" template lay-url="/api/admin/welcome">
+            <div class="layui-card-body">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>人员统计</legend>
+                </fieldset>
+                <div class="layui-row layui-col-space30">
+                    <!--用户数量-->
+                    <div class="layui-col-sm3" style="margin-top: 10px">
+                        <div class="layui-row">
+                            <div class="layui-col-xs4 text-center">
+                                <i class="fa fa-group" style="font-size: 60px"></i>
+                            </div>
+                            <div class="layui-col-xs7 text-center">
+                                <span> 用户数量 </span>
+                                <h2 class="font-bold">{{ d.data.userCount || 0}}人</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <!--在职人数-->
+                    <div class="layui-col-sm2">
+                        <div class="widget navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-group fa-3x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span style="font-size: 13px"> 在职人数 </span>
+                                    <h2 class="font-bold" style="font-size: 13px">{{ d.data.inJobCount || 0}}人</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--离职人数-->
+                    <div class="layui-col-sm2">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-group fa-3x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span style="font-size: 13px"> 离职人数 </span>
+                                    <h2 class="font-bold" style="font-size: 13px">{{ d.data.reimburseCount || 0}}人</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--初级合伙人-->
+                    <div class="layui-col-sm2">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-group fa-3x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span style="font-size: 11px"> 初级合伙人 </span>
+                                    <h2 class="font-bold" style="font-size: 13px">{{ d.data.primaryCount || 0}} 人</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--高级合伙人-->
+                    <div class="layui-col-sm2">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-group fa-3x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span style="font-size: 11px"> 高级合伙人 </span>
+                                    <h2 class="font-bold" style="font-size: 13px">{{ d.data.advancedCount || 0}} 人</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>资金统计</legend>
+                </fieldset>
+                <div class="layui-row layui-col-space30">
+                    <!--总工资-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-cny fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 总工资 </span>
+                                    <h2 class="font-bold">{{ d.data.totalWages || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--借款总额-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-cny fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 借款总额 </span>
+                                    <h2 class="font-bold">{{ d.data.totalBorrowMoney || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--还款总额-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-cny fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 还款总额 </span>
+                                    <h2 class="font-bold">{{ d.data.totalRepayment || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--蛋蛋收益-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-cny fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 蛋蛋收益 </span>
+                                    <h2 class="font-bold">{{ d.data.dandankjEarnings || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--涨知识消费-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-cny fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 涨知识消费 </span>
+                                    <h2 class="font-bold">{{ d.data.dataConsumption || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>蛋币统计</legend>
+                </fieldset>
+                <div class="layui-row layui-col-space30">
+                    <!--总蛋币-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-cny fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span>总蛋币</span>
+                                    <h2 class="font-bold">{{ d.data.totalDanGold || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--蛋币总消费-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-cny fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span>蛋币总消费</span>
+                                    <h2 class="font-bold">{{ d.data.totalConsumptionDanGold || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>提成统计</legend>
+                </fieldset>
+                <div class="layui-row layui-col-space30">
+                    <!--驻场老师提成 -->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-graduation-cap fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 驻场老师提成 </span>
+                                    <h2 class="font-bold">&yen; {{ d.data.teacherUnit || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--高级合伙人分红-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-group fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 高级合伙人分红 </span>
+                                    <h2 class="font-bold">&yen; {{ d.data.advancedUnit || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--合伙公司分红-->
+                    <div class="layui-col-sm3">
+                        <div class="widget style1 navy-bg">
+                            <div class="layui-row">
+                                <div class="layui-col-xs4">
+                                    <i class="fa fa-university fa-5x"></i>
+                                </div>
+                                <div class="layui-col-xs8 text-right">
+                                    <span> 合伙公司分红 </span>
+                                    <h2 class="font-bold">&yen; {{ d.data.enterpriseUnit || 0}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </script>
+
+
+    </div>
+</div>
+
+
+<script>
+    //加载 controller 目录下的对应模块
+    /*
+
+      小贴士：
+        这里 console 模块对应 的 console.js 并不会重复加载，
+        然而该页面的视图则是重新插入到容器，那如何保证能重新来控制视图？有两种方式：
+          1): 借助 layui.factory 方法获取 console 模块的工厂（回调函数）给 layui.use
+          2): 直接在 layui.use 方法的回调中书写业务代码，即:
+              layui.use('console', function(){
+                //同 console.js 中的 layui.define 回调中的代码
+              });
+
+      这里我们采用的是方式1。其它很多视图中采用的其实都是方式2，因为更简单些，也减少了一个请求数。
+
+    */
+    layui.use('welcome', layui.factory('welcome'));
+</script>
+

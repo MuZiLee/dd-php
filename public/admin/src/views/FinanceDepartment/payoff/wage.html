@@ -1,0 +1,197 @@
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <script type="text/html" template lay-done="layui.data.done(d);"></script>
+
+                <div class="layui-card-header">工资单信息</div>
+                <div class="layui-card-body" pad15>
+
+                    <div class="layui-form" lay-filter="">
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>加项</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">签单价</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="sign_unit_price" name="sign_unit_price" value="{{d.params.slip.sign_unit_price || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">员工单价</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="employee_unit_price" name="employee_unit_price" value="{{d.params.slip.employee_unit_price || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">总工时</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="total_working_hours" name="total_working_hours" value="{{d.params.slip.total_working_hours || 0.0}}小时" readonly>
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">其他加项</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="other_additions" name="other_additions" value="{{d.params.slip.other_additions || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                            <script type="text/html" template="">
+                                <label>{{d.params.slip.other_additions_remarks || "暂无"}}</label>
+                            </script>
+                        </div>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>借款</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">借款</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="loan" name="loan" value="{{d.params.slip.loan || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>减项</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">保险费</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="insurance" name="insurance" value="{{d.params.slip.insurance || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">税费</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="taxes" name="taxes" value="{{d.params.slip.taxes || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">管理费</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="management_fee" name="management_fee" value="{{d.params.slip.management_fee || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">其他扣款</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="other_deductions" name="loan" value="{{d.params.slip.other_deductions || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                            <script type="text/html" template="">
+                                <label>{{ d.params.slip.other_deductions_remarks || "暂无"}}</label>
+                            </script>
+                        </div>
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>实发工资</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">实发工资</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="actual_salary" name="actual_salary" value="{{d.params.slip.actual_salary || 0.0}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">结算方式</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="settlement_method" name="settlement_method" value="{{d.params.signingInfo.salary_payment_method || ''}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>提成</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">业务员提成</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="salesperson_commission" name="salesperson_commission" value="{{d.params.slip.salesperson_commission}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">驻场老师提成</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="resident_teacher_commission" name="resident_teacher_commission" value="{{d.params.slip.resident_teacher_commission}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                            <legend>分红</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">初级分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="primary_dividend" name="primary_dividend" value="{{d.params.slip.primary_dividend}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">高级分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="advanced_dividend" name="advanced_dividend" value="{{d.params.slip.advanced_dividend}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">战略分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="strategic_dividend" name="strategic_dividend" value="{{d.params.slip.strategic_dividend}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">蛋蛋分红</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="dividend" name="dividend" value="{{d.params.slip.dividend}}元" readonly>
+                                </script>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.data.done = function (d) {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form;
+            var table = layui.table;
+
+
+        });
+    }
+
+</script>

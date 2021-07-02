@@ -1,0 +1,178 @@
+
+
+<title>后台管理员</title>
+  
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>系统管理</cite></a>
+    <a><cite>后台管理员</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">   
+  <div class="layui-card">
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-useradminrole-formlist">
+      <div class="layui-form-item">
+        <div class="layui-inline">
+          角色筛选
+        </div>
+        <div class="layui-inline">
+          <select name="rolename" lay-filter="LAY-user-adminrole-type">
+            <option value="-1">全部角色</option>
+            <option value="9">驻场经理</option>
+            <option value="11">业务员</option>
+            <option value="12">人事部</option>
+            <option value="13">财务部</option>
+            <option value="14">总经理</option>
+            <option value="15">蛋蛋</option>
+            <option value="100">管理员</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="layui-card-body">
+      <div style="padding-bottom: 10px;">
+        <button class="layui-btn layuiadmin-btn-role" data-type="add">添加</button>
+      </div>
+
+      <table id="LAY-user-back-role" lay-filter="LAY-user-back-role"></table>  
+
+      <script type="text/html" id="table-useradmin-admin">
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+      </script>
+    </div>
+  </div>
+</div>
+
+<script>
+layui.use(['admin', 'form', 'view', 'table'], function(){
+  var $ = layui.$
+  ,admin = layui.admin
+  ,view = layui.view
+  ,table = layui.table
+  ,form = layui.form;
+  
+  form.render(null, 'layadmin-useradmin-formlist');
+  form.render(null, 'LAY-user-adminrole-type');
+
+  //后台管理员
+  table.render({
+    elem: '#LAY-user-back-role'
+    ,url: '/api/account/useradmin?rid='+"-1"
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field: 'id', width: 80, align: 'center', title: 'ID', sort: true}
+      ,{field: 'username', width: 150, align: 'center', title: '用户名', templet: function (d) {
+
+        return d.username?d.username:d.phone;
+
+      }}
+      ,{field: 'rtitles', width: 850, align: 'left', title: '拥有权限', templet: function (d) {
+          var rtitles = "";
+          layui.each(d.rtitles, function (index, item) {
+            rtitles = rtitles + " " + "<span class='layui-badge'>" + item + "</span>";
+          });
+          return rtitles;
+      }}
+      ,{title: '操作', align: 'center', fixed: 'right', toolbar: '#table-useradmin-admin'}
+    ]]
+
+    , page: true
+    , limit: 20
+    , limits: [10, 15, 20, 30, 40, 50, 100]
+    , text: {
+      none: "0个后台管理员"
+    }
+  });
+  
+  //搜索角色
+  var rid = ""
+  form.on('select(LAY-user-adminrole-type)', function(data){
+    console.log(data.value);
+    //执行重载
+    rid = data.value;
+
+    table.render({
+      elem: '#LAY-user-back-role'
+      ,url: '/api/account/getRoles'
+      ,method: "post"
+      ,where: {"rid": rid}
+      ,cols: [[
+        {type: 'checkbox', fixed: 'left'}
+        ,{field: 'id', width: 80, align: 'center', title: 'ID', sort: true}
+        ,{field: 'username', width: 150, align: 'center', title: '用户名', templet: function (d) {
+
+            return d.username?d.username:d.phone;
+
+          }}
+        ,{field: 'rtitles', width: 850, align: 'left', title: '拥有权限', templet: function (d) {
+            var rtitles = "";
+            layui.each(d.rtitles, function (index, item) {
+              rtitles = rtitles + " " + "<span class='layui-badge'>" + item + "</span>";
+            });
+            return rtitles;
+          }}
+        ,{title: '操作', align: 'center', fixed: 'right', toolbar: '#table-useradmin-admin'}
+      ]]
+
+      , page: true
+      , limit: 20
+      , limits: [10, 15, 20, 30, 40, 50, 100]
+      , text: {
+        none: "0个后台管理员"
+      }
+      ,parseData: function(res){
+        console.log(res);
+      }
+    });
+
+  });
+
+  //监听工具条
+  table.on('tool(LAY-user-back-role)', function(obj){
+
+    if(obj.event === 'edit'){
+      admin.popup({
+        title: '更新角色'
+        ,area: ['500px', '480px']
+        ,id: 'LAY-popup-set-roles'
+        ,success: function(layero, index){
+          view(this.id).render('administrators/setrole', obj.data).done(function(){
+
+
+
+          });
+        }
+      });
+    }
+  });
+
+
+
+  //添加新角色
+  var active = {
+    add: function() {
+      admin.popup({
+        title: '添加新角色'
+        ,area: ['500px', '480px']
+        ,id: 'LAY-popup-user-add'
+        ,success: function(layero, index){
+
+
+          view(this.id).render('administrators/addNewRole').done(function(){
+            form.render(null, 'layuiadmin-form-role');
+
+          });
+
+
+        }
+      });
+    }
+  }  
+  $('.layui-btn.layuiadmin-btn-role').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+</script>

@@ -1,0 +1,30 @@
+<title>用户管理</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>用户管理</cite></a>
+        <a><cite>角色列表</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+
+            <table id="LAY-roles-list" lay-filter="LAY-roles-list"></table>
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.avatar }}>
+            </script>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use('user', layui.factory('user')).use(['admin', 'user', 'table'], function(){
+
+
+    });
+</script>

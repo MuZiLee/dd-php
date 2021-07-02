@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta name="referrer" content="no-referrer" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../admin/start/layui/css/layui.css">
+
+</head>
+<body class="layui-form" style="margin: 20px">
+
+    <h2 id="title"></h2>
+    <div id="sub_title" style="margin-top: 5px;margin-bottom: 5px"></div>
+    <div id="time" style="margin-top: 5px;margin-bottom: 5px"></div>
+    <hr>
+    <div class="layui-layedit-iframe" name="body" id="body"></div>
+
+<script src="../share/js/zepto.min.js"></script>
+<script src="..//share/js/swiper.min.js"></script>
+    <script src="../admin/start/layui/layui.js"></script>
+<script type="text/javascript">
+    function GetQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+        var r = window.location.search.substr(1).match(reg) //search,查询？后面的参数，并匹配正则
+        if (r != null) return unescape(r[2])
+        return null
+    }
+
+    layui.use(['jquery'], function() {
+        var $ = layui.jquery;
+
+
+        var id = GetQueryString('id');
+
+        $.ajax({
+            type: "post",
+            url: "http://"+window.location.host+ "/api/articles/details",
+            dataType: "json",
+            data: {"id":id},
+            success: function (result) {
+
+                var data = result.data;
+                var body = document.getElementById('title');
+                body.innerHTML = data.title;
+
+                var body = document.getElementById('time');
+                body.innerHTML = "发布时间:"+ data.create_time;
+
+                var body = document.getElementById('sub_title');
+                if (data.type == 1) {
+                    body.innerText = "来源于:涨知识";
+                } else if (data.type == 2) {
+                    body.innerText = "来源于:公告";
+                }
+
+                var body = document.getElementById('body');
+                body.innerHTML = data.body;
+
+            }
+        });
+
+    });
+
+
+
+</script>
+</body>
+</html>

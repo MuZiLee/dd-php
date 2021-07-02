@@ -1,0 +1,82 @@
+
+
+  <title>商品列表</title>
+  
+  <div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+      <a lay-href="">主页</a>
+      <a><cite>应用</cite></a>
+      <a><cite>商品列表</cite></a>
+    </div>
+  </div>
+
+  <div class="layui-fluid">
+    <div class="layui-card">
+
+      <div class="layui-card-body">
+
+        <table id="LAY-app-content-list" lay-filter="LAY-app-content-list"></table>
+        <script type="text/html" id="buttonTpl">
+          {{#  if(d.status == 1){ }}
+            <button class="layui-btn layui-btn-xs">已上架</button>
+            <button class="layui-btn layui-btn-xs" lay-event="set">设置</button>
+          {{#  } else if(d.status == 0)  { }}
+          <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="push">待上架</button>
+          {{#  } else { }}
+          <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="push">已下架</button>
+          <button class="layui-btn layui-btn-xs" lay-event="set">设置</button>
+          {{#  } }}
+        </script>
+
+
+        <script type="text/html" id="table-content-list">
+<!--          <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>-->
+          <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  layui.use('contlist', layui.factory('contlist')).use(['admin', 'contlist', 'table'], function(){
+    var $ = layui.$
+    ,admin = layui.admin
+    ,view = layui.view
+    ,table = layui.table
+    ,form = layui.form;
+    
+    form.render(null, 'app-content-list');
+
+
+    var active = {
+      batchdel: function(){
+        var checkStatus = table.checkStatus('LAY-app-content-list')
+        ,checkData = checkStatus.data; //得到选中的数据
+
+        if(checkData.length === 0){
+          return layer.msg('请选择数据');
+        }
+      
+        layer.confirm('确定删除吗？', function(index) {
+          
+          //执行 Ajax 后重载
+          /*
+          admin.req({
+            url: 'xxx'
+            //,……
+          });
+          */
+          table.reload('LAY-app-content-list');
+          layer.msg('已删除');
+        });
+      }
+
+    }; 
+
+    $('.layui-btn.layuiadmin-btn-list').on('click', function(){
+      var type = $(this).data('type');
+      active[type] ? active[type].call(this) : '';
+    });
+
+  });
+  </script>

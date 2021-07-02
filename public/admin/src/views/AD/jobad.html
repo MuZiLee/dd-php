@@ -1,0 +1,49 @@
+<title>广告管理 - 职位广告</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>广告管理</cite></a>
+        <a><cite>职位广告</cite></a>
+    </div>
+</div>
+
+
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+                    <div class="layui-form" lay-filter="LAY-jobAd-form-list">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-submit lay-filter="LAY-jobAd-form-submit-filter-add">添加</button>
+                        </div>
+                    </div>
+
+                    <table class="layui-hide" id="LAY-jobAd-list" lay-filter="LAY-jobAd-list"></table>
+                    <script type="text/html" id="imgTpl">
+                        <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.image }}>
+                    </script>
+
+                    <script type="text/html" id="LAY-jobAd-list-tool-tages">
+                        <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑/查看</a>
+                        <a class="layui-btn layui-btn-normal layui-bg-red layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    layui.use('ad', layui.factory('ad')).use(['ad','table','form'], function(){
+        // var ad = layui.ad;
+        // ad.jobAd();
+    });
+
+</script>

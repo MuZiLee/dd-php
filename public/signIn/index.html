@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<!--    <meta name="viewport"-->
+<!--          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>-->
+<!--    <meta name="format-detection" content="telephone=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>签到</title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/signin.css"/>
+</head>
+
+<body>
+<div class="top flex flex-align-end flex-pack-center flex-warp">
+    <div class="out-1 flex flex-align-center flex-pack-center" id="signIn">
+        <div class="out-2 flex flex-align-center flex-pack-center">
+            <div class="signBtn">
+                <strong id="sign-txt">签到</strong>
+                <span>已签到<em id="sign-count">0</em>次</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tips">每天来签到，可获得5个蛋币</div>
+<div class="Calendar">
+    <div id="calendar"></div>
+</div>
+
+<script type="text/javascript" src="./js/rili.js"></script>
+<script type="text/javascript" src="./js/layui.js"></script>
+<script>
+    layui.use(["jquery", "element", "layer", "form", "table"], function () {
+        const $ = layui.jquery;
+
+        let nowMonthTime = new Date().getMonth() + 1;
+        var url = "http://192.168.43.234";  //android 热点
+        // var url = "http://192.168.1.2" //wifi
+        // var url = "http://172.20.10.7" // iphone 热点
+        // var url = "http://121.37.240.132" // 广州服务器
+
+        /**
+         * 获取GET参数
+         */
+        function getQueryVariable(name) {
+            const reg = new RegExp(`(^|&)` + name + `=([^&]*)(&|$)`, `i`);
+            const r = window.parent.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+
+            return null;
+        }
+
+        /**
+         * 日历工具类
+         */
+        let calUtil = {
+            //当前日历显示的年份
+            showYear: 2015,
+            //当前日历显示的月份
+            showMonth: 1,
+
+            //当前日历显示的天数
+            showDays: 1,
+
+            eventName: "load",
+
+            //初始化日历
+            init: function (signList) {
+                calUtil.setMonthAndDay();
+                calUtil.draw(signList);
+                calUtil.bindEvent();
+            },
+
+            draw: function (signList) {
+                //绑定日历
+                const str = calUtil.drawCal(calUtil.showYear, calUtil.showMonth, signList);
+                $("#calendar").html(str);
+
+                //绑定日历表头
+                const calendarName = calUtil.showYear + "年" + calUtil.showMonth + "月";
+                $(".calendar_month_span").html(calendarName);
+            },
+
+            //绑定事件
+            bindEvent: function () {
+                //绑定上个月事件
+                $(".calendar_month_next").click(function () {
+                    const nowMonth = $(".calendar_month_span").html().split("年")[1].split("月")[0];
+
+                    calUtil.showMonth = parseInt(nowMonth) - 1;
+                    nowMonthTime = calUtil.showMonth;
+
+                    if (calUtil.showMonth == 0) {
+                        calUtil.showMonth = 12;
+                        calUtil.showYear -= 1;
+                    }
+
+                    getList();
+
+                    calUtil.eventName = "prev";
+                });
+
+                //绑定下个月事件
+                $(".calendar_month_prev").click(function () {
+                    //ajax获取日历json数据
+                    const nowMonth = $(".calendar_month_span").html().split("年")[1].split("月")[0];
+                    calUtil.showMonth = parseInt(nowMonth) + 1;
+                    nowMonthTime = calUtil.showMonth;
+
+                    if (calUtil.showMonth == 13) {
+                        calUtil.showMonth = 1;
+                        calUtil.showYear += 1;
+                    }
+
+                    getList();
+
+                    calUtil.eventName = "next";
+                });
+            },
+
+            //获取当前选择的年月
+            setMonthAndDay: function () {
+                let nowMonth;
+
+                switch (calUtil.eventName) {
+                    case "load":
+                        const current = new Date();
+
+                        calUtil.showYear = current.getFullYear();
+                        calUtil.showMonth = current.getMonth() + 1;
+
+                        break;
+                    case "prev":
+                        nowMonth = $(".calendar_month_span").html().split("年")[1].split("月")[0];
+
+                        calUtil.showMonth = parseInt(nowMonth) - 1;
+                        nowMonthTime = calUtil.showMonth;
+
+                        if (calUtil.showMonth == 0) {
+                            calUtil.showMonth = 12;
+                            calUtil.showYear -= 1;
+                        }
+
+                        break;
+                    case "next":
+                        nowMonth = $(".calendar_month_span").html().split("年")[1].split("月")[0];
+                        calUtil.showMonth = parseInt(nowMonth) + 1;
+                        nowMonthTime = calUtil.showMonth;
+
+                        if (calUtil.showMonth == 13) {
+                            calUtil.showMonth = 1;
+                            calUtil.showYear += 1;
+                        }
+
+                        break;
+                }
+            },
+
+            getDaysInmonth: function (iMonth, iYear) {
+                const dPrevDate = new Date(iYear, iMonth, 0);
+
+                return dPrevDate.getDate();
+            },
+
+            bulidCal: function (iYear, iMonth) {
+                const aMonth = [];
+
+                aMonth[0] = new Array(7);
+                aMonth[1] = new Array(7);
+                aMonth[2] = new Array(7);
+                aMonth[3] = new Array(7);
+                aMonth[4] = new Array(7);
+                aMonth[5] = new Array(7);
+                aMonth[6] = new Array(7);
+
+                const dCalDate = new Date(iYear, iMonth - 1, 1);
+                const iDayOfFirst = dCalDate.getDay();
+                const iDaysInMonth = calUtil.getDaysInmonth(iMonth, iYear);
+
+                let iVarDate = 1;
+                let d, w;
+
+                aMonth[0][0] = "日";
+                aMonth[0][1] = "一";
+                aMonth[0][2] = "二";
+                aMonth[0][3] = "三";
+                aMonth[0][4] = "四";
+                aMonth[0][5] = "五";
+                aMonth[0][6] = "六";
+
+                for (d = iDayOfFirst; d < 7; d++) {
+                    aMonth[1][d] = iVarDate;
+                    iVarDate++;
+                }
+
+                for (w = 2; w < 7; w++) {
+                    for (d = 0; d < 7; d++) {
+                        if (iVarDate <= iDaysInMonth) {
+                            aMonth[w][d] = iVarDate;
+                            iVarDate++;
+                        }
+                    }
+                }
+
+                return aMonth;
+            },
+
+            ifHasSigned: function (signList, day) {
+                let signed = false;
+
+                $.each(signList, function (index, item) {
+                    if (item == day) {
+                        signed = true;
+                        return false;
+                    }
+                });
+
+                return signed;
+            },
+
+            drawCal: function (iYear, iMonth, signList) {
+                const myMonth = calUtil.bulidCal(iYear, iMonth);
+                const htmls = [];
+
+                htmls.push("<div class='sign_main' id='sign_layer'>");
+                htmls.push("<div class='sign_succ_calendar_title'>");
+                // htmls.push("<div class='calendar_month_next'>&lt;</div>");
+                htmls.push("<div class='calendar_month_span'></div>");
+                // htmls.push("<div class='calendar_month_prev'>&gt;</div>");
+                htmls.push("</div>");
+                htmls.push("<div class='sign' id='sign_cal'>");
+                htmls.push("<table>");
+                htmls.push("<tr>");
+                htmls.push("<th>" + myMonth[0][0] + "</th>");
+                htmls.push("<th>" + myMonth[0][1] + "</th>");
+                htmls.push("<th>" + myMonth[0][2] + "</th>");
+                htmls.push("<th>" + myMonth[0][3] + "</th>");
+                htmls.push("<th>" + myMonth[0][4] + "</th>");
+                htmls.push("<th>" + myMonth[0][5] + "</th>");
+                htmls.push("<th>" + myMonth[0][6] + "</th>");
+                htmls.push("</tr>");
+
+                let d, w;
+
+                for (w = 1; w < 7; w++) {
+                    htmls.push("<tr>");
+                    for (d = 0; d < 7; d++) {
+                        let ifHasSigned = calUtil.ifHasSigned(signList, myMonth[w][d]);
+
+                        if (ifHasSigned) {
+                            htmls.push("<td class='on'>" + `<span>${(!isNaN(myMonth[w][d]) ? myMonth[w][d] : " ")}</span>`);
+                        } else {
+                            htmls.push("<td>" + (!isNaN(myMonth[w][d]) ? myMonth[w][d] : " ") + "</td>");
+                        }
+                    }
+                    htmls.push("</tr>");
+                }
+
+                htmls.push("</table>");
+                htmls.push("</div>");
+                htmls.push("</div>");
+
+                return htmls.join('');
+            }
+        };
+
+        const layer = layui.layer;
+
+        /**
+         * 用户信息
+         * @type {{id: number}}
+         */
+        const data = {
+            id: getQueryVariable('uid')
+        }
+
+        /**
+         * 已签到的数组
+         * @type {*[]}
+         */
+        let myday = [];
+        let isSign = false;
+        let toMonth = new Date().getMonth()+1;
+        let toDay = new Date().getDate();
+
+        getList();
+
+        // 获取历史签到
+        function getList() {
+
+            $.ajax({
+                type: "get"
+                , url: url+"/api/signin/getList"
+                , dataType: "json"
+                , data: {
+                    id: data.id,
+                    uid: data.id
+                }
+                , success: function (res) {
+                    myday = [];
+
+                    layui.each(res.data, function (index, item) {
+                        let s = new Date(item.create_time).getDate();
+                        let m = new Date(item.create_time).getMonth() + 1;
+
+                        const timestamp = Date.parse(item.create_time);
+                        const date = new Date(timestamp);
+
+                        if (date.getDate() == toDay) {
+                            isSign = true;
+                            $$("sign-txt").innerHTML = "已签到";
+
+                        }
+                        console.log(m + " " + toMonth);
+                        if (m == toMonth) {
+                            myday.push(s)
+                            $('.active' + date.getDate()).parent('td').addClass('onToday');
+                        }
+                    });
+
+
+                    calUtil.init(myday);
+
+                    $$("sign-count").innerHTML = myday.length;
+
+                    //当前时间
+                    const currentTime = new Date().getTime();
+
+                    //过去时间
+                    const days = currentTime - myday.pop();
+
+                    const day = parseInt(days / (1000 * 60 * 60 * 24));
+
+                    if (day == 0) {
+                        isSign = true;
+                        $$("sign-txt").innerHTML = "已签到";
+
+                        let today = new Date()
+                        today = today.getDate()
+                        $('.active' + today).parent('td').addClass('onToday')
+                    }
+                }
+            });
+        }
+
+        //签到
+        $("#signIn").click(() => {
+            let currentTime = new Date().getTime();
+
+            if (isSign) {
+                return
+            }
+
+            $.ajax({
+                type: "post"
+                , url: url+"/api/signin/add"
+                , dataType: "json"
+                , data: {
+                    currentTime: currentTime
+                    , id: data.id
+                }
+                , success: result => {
+                    if (result.code == 0) {
+                        getList();
+                        layui.layer.msg('签到成功');
+                        if (isSign == false) {
+                            $$("sign-txt").innerHTML = "已签到";
+                            $$("sign-count").innerHTML = parseInt($$("sign-count").innerHTML) + 1;
+                        }
+                        isSign = true;
+                    }
+
+                    if (result.code == 1) {
+                        $$("sign-txt").innerHTML = "已签到";
+                        $$("sign-count").innerHTML = parseInt($$("sign-count").innerHTML) + 1;
+
+                        cale.isSignIn = true;
+                    } else if (result.code == 2) {
+                        $$("sign-txt").innerHTML = "已签到";
+                        isSign = true;
+                        layui.layer.msg('今天已经签到了');
+                    }
+                },
+                error: () => {
+                    layui.layer.msg('接口错误');
+                }
+            });
+        })
+    });
+
+</script>
+
+</body>
+
+</html>

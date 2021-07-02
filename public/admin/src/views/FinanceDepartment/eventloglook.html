@@ -1,0 +1,65 @@
+
+
+
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+
+            <table class="layui-hide" id="LAY-eventloglook-list" lay-filter="LAY-eventloglook-list"></table>
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.info.avatar }}>
+            </script>
+            <script type="text/html" id="usernameTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.info.username || d.info.phone}}</label>
+            </script>
+            <script type="text/html" id="create_timeTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.create_time || ""}}</label>
+            </script>
+            <script type="text/html" id="update_timeTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.update_time || ""}}</label>
+            </script>
+            <script type="text/html" id="idTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.info.id}}</label>
+            </script>
+            <script type="text/html" id="scoreTpl">
+                <label style="display: inline-block; width: 100%; text-align: center">{{ d.score }}</label>
+            </script>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--<script>-->
+<!--    layui.use('eventloglook', layui.factory('eventloglook'));-->
+<!--    // layui.define(["jquery", "element", "layer", "laydate", "layedit", "view", "table", "form", "admin", "upload"], function(exports) {-->
+<!--    //     var form = layui.form;-->
+<!--    //     var admin = layui.admin;-->
+<!--    //     var table = layui.table;-->
+<!--    //     var data = layui.setter.getData().data;-->
+<!--    //     // console.log(data);-->
+<!--    //     table.render({-->
+<!--    //         elem: '#LAY-eventloglook-list'-->
+<!--    //         ,url:'/api/events/getEventLogsList/'-->
+<!--    //-->
+<!--    //         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增-->
+<!--    //         // ,cols: [[-->
+<!--    //         //     {field:'id', width:80, title: 'ID', sort: true}-->
+<!--    //         //     ,{width:80, title: '发起者', templet: function (d) {-->
+<!--    //         //-->
+<!--    //         //     }}-->
+<!--    //         //     ,{width:80, title: '状态', sort: true, templet: "#statusTpl"}-->
+<!--    //         //     ,{width:80, title: '备注', templet: "#phoneTpl"}-->
+<!--    //         //     ,{title: '操作员', templet: "#phoneTpl"}-->
+<!--    //         //     ,{width:137, title: '操作时间', sort: true, templet: "#phoneTpl"}-->
+<!--    //         // ]]-->
+<!--    //     });-->
+<!--    //-->
+<!--    //-->
+<!--    //     exports('eventloglook', {});-->
+<!--    // });-->
+
+<!--</script>-->

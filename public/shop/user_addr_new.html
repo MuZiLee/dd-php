@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="商城" http-equiv="keywords">
+<meta name="description" content="商城,购物">
+<meta name="format-detection" content="telephone=no"><!-- 禁止IPHONE识别手机号码 -->
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>颜文明体育用品微商城</title>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+
+<!-- public_css -->
+<link rel="stylesheet" type="text/css" href="css/public/public_lib.css">
+
+<!-- zy_public_css -->
+<link rel="stylesheet" type="text/css" href="css/zy_public.css">
+<!-- vip css -->
+<link rel="stylesheet" type="text/css" href="css/zy_vip.css">
+
+<!-- js -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+
+<!-- js——public -->
+<script type="text/javascript" src="js/public.js"></script>
+
+</head>
+<body>
+<header class="zy_search_top_box vip_top_box">
+	<div class="zy_title_top fix">
+		<div class="one" href="javascript:" onclick="history.back();"><img src="images/back_jt.png"></div>
+		<h1>地址管理</h1>
+	    <div class="r">
+	    	<span><img src="images/web/zy_icon_menu.png"></span>
+	    	<dl>
+	    		<dt></dt>
+	    		<dd><i><img src="images/menu_icon01.png"></i><a href="index.html">首页</a></dd>
+	    		<dd><i><img src="images/menu_icon02.png"></i><a href="catalog.html">分类</a></dd>
+	    		<dd><i><img src="images/menu_icon03.png"></i><a href="flow.html">购物车</a></dd>
+	    		<dd><i><img src="images/menu_icon04.png"></i><a href="user.html">会员中心</a></dd>
+	    	</dl>
+	    </div>
+	    <script type="text/javascript">
+			$(function(){
+				// $(".zy_title_top .r dl").hide()
+				$(".zy_title_top .r span").mousedown(
+					function(event){
+						$(".zy_title_top .r dl").fadeToggle()
+						event.stopPropagation();//阻止冒泡
+					}
+				)
+				$("html,body").mousedown(
+					function(){
+						$(".zy_title_top .r dl").fadeOut()
+					}
+				)
+			})
+		</script>
+	</div>
+</header>
+<div class="top_zhanwei_box"></div>	
+<script type="text/javascript">
+	$(function(){
+		var top_h=$(".vip_top_box").height()
+		$(".top_zhanwei_box").css("height",top_h)
+	})
+</script>
+<!-- 内容框 -->
+<div class="zy_module-content">	
+	<div class="vip_user_addr_new">
+		<div class="box dizhi_new">
+			<form>
+				<div class="txt">
+					<h2><input type="text" name="" placeholder="收货人姓名"></h2>
+					<h2><input type="text" name="" placeholder="电子邮件地址"></h2>
+					<div class="pick-area pick-area1" name=""></div>
+					<h2><input type="text" name="" placeholder="详细地址"></h2>
+					<h2><input type="text" name="" placeholder="手机号（必填）"></h2>
+					<h2><input type="text" name="" placeholder="邮政编码"></h2>
+				</div>
+				<button>保存新地址</button>
+			</form>
+		</div>
+
+		<!-- 地区选择 貌似js引用要放在后面-->
+		<script type="text/javascript" src="js/pick-pcc.min.1.0.2.js"></script>
+		<script type="text/javascript">
+		    $(".pick-area1").pickArea({
+		    	"display":"block",
+		    	"hoverColor":"#999",//背景颜色
+		    	"fontWeight":"normal",
+		        // "width":"420",//设置“省市县”文本边框的宽度
+		        // "height":"48",//设置“省市县”文本边框的高度
+		        "maxHeight":"300px",
+		    })
+
+		</script>
+		
+	</div>
+</div>
+
+</body>
+</html>

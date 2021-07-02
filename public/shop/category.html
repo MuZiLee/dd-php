@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="商城" http-equiv="keywords">
+<meta name="description" content="商城,购物">
+<meta name="format-detection" content="telephone=no"><!-- 禁止IPHONE识别手机号码 -->
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>颜文明体育用品微商城</title>
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+
+<!-- public_css -->
+<link rel="stylesheet" type="text/css" href="css/public/public_lib.css">
+
+<!-- zy_public_css -->
+<link rel="stylesheet" type="text/css" href="css/zy_public.css">
+<!-- 分类、品牌、店铺css -->
+<link rel="stylesheet" type="text/css" href="css/zy_main.css">
+
+<!-- js -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+
+<!-- js——public -->
+<script type="text/javascript" src="js/public.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	$(function(){
+		$(".zy_search_top .shaix").mousedown(
+			function(){
+				$(".zy_shaixuanbox").show()
+				$(".zy_search_top_box").hide()			
+				$(".zy_module-content").hide()
+			}
+		)
+		$(".zy_shaixuanbox .one").mousedown(
+			function(){
+				$(".zy_shaixuanbox").hide()
+				$(".zy_search_top_box").show()		
+				$(".zy_module-content").show()
+			}
+		)
+
+		var h1=$(".zy_search_top_box").height();
+		var h2=$(".zy_rank_box").innerHeight();
+
+		$(window).scroll(function(){
+			var s = $(document).scrollTop();
+			if (s>h1) {
+				$(".zy_rank_box").addClass('scroll_fix')
+				$(".zy_gzttc_box").css("padding-top",h2)
+			}else{
+				$(".zy_rank_box").removeClass('scroll_fix')
+				$(".zy_gzttc_box").css("padding-top",0)
+			}
+		});
+	})
+</script>
+<!-- 筛选框 -->
+<div class="zy_shaixuanbox">
+	<div class="zy_title_top zy_shaix_box fix">
+		<div class="one"><img src="images/back_jt.png"></div>
+		<h1>筛选</h1>
+	</div>
+	<div class="sx_con">
+		<form>
+			<div class="conbox">
+				<h2>类别</h2>
+				<select>
+					<option>经典鞋</option>
+					<option>运动鞋</option>
+					<option>其他东西</option>
+				</select>
+				<select>
+					<option>经典男鞋</option>
+					<option>经典女鞋</option>
+				</select>
+			</div>
+			<div class="conbox">
+				<h2>品牌</h2>
+				<select>
+					<option>不限</option>
+					<option>颜文明</option>
+					<option>其他品牌</option>
+				</select>
+			</div>
+			<div class="conbox sexbox">
+				<h2>性别</h2>
+				<label><input type="radio" name="sex" checked="checked">男</label>
+				<label><input type="radio" name="sex">女</label>
+			</div>
+			<div class="conbox price">
+				<h2>价格</h2>
+				<label><input type="text" name="" value="100">~<input type="text" name="" value="400">元</label>
+			</div>
+			<div class="conbox sexbox other">
+				<h2>其他条件</h2>
+				<label><input type="radio" name="qita" checked="checked">不限</label>
+				<label><input type="radio" name="qita">网站自营</label>
+				<label><input type="radio" name="qita">入驻商家</label>
+			</div>
+			<div class="btn">
+				<button class="quex">取消</button>
+				<button>完成</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 内容框 -->
+<div class="zy_module-content">
+	<div class="zy_gzttc_box">
+
+
+		<div class="zy_goods_grid">
+			<ul class="_picbox_w_h">
+				<li>
+					<a href="goods.html"><i><img src="images/pic01.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic02.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic05.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic08.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic08.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic01.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic05.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic02.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic01.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic02.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic05.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic08.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic08.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic01.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic05.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+				<li>
+					<a href="goods.html"><i><img src="images/pic02.jpg"></i></a>
+					<p><a href="goods.html">颜文明旗舰店Classical运动鞋男/女 男鞋头层牛皮休闲专业网球鞋</a></p>
+					<span><em>￥299.00</em><i onclick="javascript: alert('成功加入购物车')"></i></span>
+				</li>
+			</ul>
+			<div class="zy_more">
+				<h2>上拉加载更多</h2>
+			</div>
+		</div>
+
+	</div>
+	
+	<!-- 底部 -->
+	<div class="footer_box">
+		<div class="footer">
+			<!--<h2>-->
+				<!--<a href="login.html">登录</a>&lt;!&ndash;-->
+			 <!--&ndash;&gt;<a href="register.html">注册</a>&lt;!&ndash;-->
+			 <!--&ndash;&gt;<a href="supplier-privilege.html">商家中心</a>&lt;!&ndash;-->
+			 <!--&ndash;&gt;<a href="about_mdcx.html">门店查询</a>-->
+			<!--</h2>-->
+			<!--<h3>-->
+				<!--<span><a href="about.html">关于我们</a></span>-->
+				<!--<span><a href="about.html">购物指南</a></span>-->
+				<!--<span><a href="about.html">支付方式</a></span>-->
+				<!--<span><a href="about.html">售后服务</a></span>-->
+			<!--</h3>-->
+
+		</div>
+	</div>
+
+	<!-- 返回顶部 -->
+	<div class="go_top">
+		<a class="btn_top"></a>
+	</div>
+	<script type="text/javascript">
+        $(function(){
+			window.onscroll=function(){
+			var autoheight=document.body.scrollTop||document.documentElement.scrollTop;
+			if(autoheight>100){
+				$(".go_top").fadeIn()
+				}else{
+					$(".go_top").fadeOut()
+				}
+			}
+			$(".btn_top").mousedown(
+				function(){
+					$("html, body").animate({"scroll-top":0},"fast");
+				}
+			)
+		})
+    </script>
+
+	<!-- 底部导航 -->
+	<div class="foot_menu">
+		<ul>
+			<li>
+				<a href="index.html">
+					<i><img src="images/menu_icon01.png"></i>
+					<span>首 页</span>
+				</a>
+			</li>
+			<li>
+				<a href="catalog.html">
+					<i><img src="images/menu_icon02.png"></i>
+					<span>分 类</span>
+				</a>
+			</li>
+			<li class="gwc">
+				<a href="flow.html">
+					<i><img src="images/menu_icon03.png"></i>
+					<span>购物车</span>
+					<em>3</em>
+				</a>
+			</li>
+		</ul>
+	</div>
+	
+</div>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$(".zy_search_top .box").mousedown(
+			function(){
+				$(".search_bomb_box").show()
+				$(".zy_search_top_box").hide()			
+				$(".zy_module-content").hide()
+			}
+		)
+		$(".search_bomb_box .search_top>a").mousedown(
+			function(){
+				$(".search_bomb_box").hide()
+				$(".zy_search_top_box").show()		
+				$(".zy_module-content").show()
+			}
+		)
+	})
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<title>意见反馈</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>意见反馈</cite></a>
+    </div>
+</div>
+
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+                    <!--<div class="layui-form" lay-filter="LAY-XXXXXX-form-list">-->
+                    <!--<div class="layui-btn-container">-->
+
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-green" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-add">添加</button>-->
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-add">添加</button>-->
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-orange" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-push">发布</button>-->
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-black" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-soldOut">下架</button>-->
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-red" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>-->
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-cyan" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>-->
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-white" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>-->
+                    <!--<button class="layui-btn layuiadmin-btn-useradmin layui-bg-gray" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>-->
+
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <table class="layui-hide" id="LAY-userTable-list" lay-filter="LAY-userTable-list"></table>
+                    <script type="text/html" id="imgTpl">
+                        <img style="display: inline-block; width: 50%; height: 100%;" src={{ d.XXXXXX }}>
+                    </script>
+                    <script type="text/html" id="buttonTpl">
+                        <!--行内事件使用lay-event来监听-->
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="buttonTpl">>迷你按钮</button>
+                    </script>
+                    <script type="text/html" id="switchTpl">
+                        {{# if ( d.client.isHot == 1 ){ }}
+                        <a class="layui-btn layui-btn-danger layui-bg-red layui-btn-xs" lay-event="isHotAction"><i
+                                class="layui-icon layui-icon-edit"></i>{{ d.client.isHot == 1 ? '热招' : '普招' }}</a>
+                        {{# } else { }}
+                        <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="isHotAction"><i
+                                class="layui-icon layui-icon-edit"></i>{{ d.client.isHot == 1 ? '热招' : '普招' }}</a>
+                        {{# } }}
+                    </script>
+                    <script type="text/html" id="Lay-XXXXXX-list-toolbar">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-event="add">添加职位
+                            </button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-orange" lay-event="push">发布职位
+                            </button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-black" lay-event="soldOut">下架职位
+                            </button>
+                        </div>
+                    </script>
+
+                    <script type="text/html" id="LAY-XXXXXX-list-tool-tages">
+                        <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="edit"><i
+                                class="layui-icon layui-icon-edit"></i>编辑/查看</a>
+                        <a class="layui-btn layui-btn-normal layui-bg-red layui-btn-xs" lay-event="del"><i
+                                class="layui-icon layui-icon-delete"></i>删除</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(["jquery", "element", "layer", "form", "table"], function() {
+        var $ = layui.jquery;
+        var table = layui.table;
+        // var layer = layui.layer;
+        var layerElement = layui.element;
+
+        table.render({
+            elem: "#LAY-userTable-list"
+            , url: "/api/feedbackes/getList"
+            , method: "post"
+            // ,toolbar: '#toolbarDemo'
+            , defaultToolbar: []
+            , height: "full-150"
+            , cols: [[
+                {type: "checkbox", fixed: "left"}
+                , {field: "id", title: "ID", width: 80, sort: true, fixed: "left"}
+                , {field: "username", width: 80, title: "用户", templet: function (d) {
+                    return '<label>'+d.user.username+'</label>';
+                }}
+                , {field: "title", title: "标题"}
+                , {field: "content", title: "内容"}
+                , {field: "create_time", title: "提交时间"}
+                // , {fixed: "right", title: "操作", width: 120, toolbar: "#toolBar", align: "center"},
+            ]]
+            , response: function(data) {
+                console.log(data);
+            }
+            , page: true
+        });
+
+    });
+</script>

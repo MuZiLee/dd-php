@@ -1,0 +1,105 @@
+
+
+
+
+
+<div class="layui-form" lay-filter="setrole-form-role" id="setrole-form-role" style="padding: 20px 30px 0 0;">
+    <script type="text/html" template lay-done="layui.data.done(d);"></script>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" readonly id="username" name="username"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限范围</label>
+        <div class="layui-input-block" id="rids" name="rids" lay-filter="rids" aria-required="true"></div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="setrole-submit" value="确认" class="layui-btn">
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.data.done = function(d) {
+        layui.use(['admin', 'form', 'jquery'], function(){
+            var $ = layui.jquery
+                ,form = layui.form
+                ,admin = layui.admin;
+            console.log(d.params);
+
+            form.render(null, 'setrole-form-role');
+            form.val("setrole-form-role", {
+                "username": d.params.username?d.params.username:d.params.phone
+            });
+
+
+
+            var items = [
+                {"id":9, "title": "驻场经理"},
+                {"id":11, "title": "业务员"},
+                {"id":12, "title": "人事部"},
+                {"id":13, "title": "财务部"},
+                {"id":14, "title": "总经理"},
+                {"id":15, "title": "蛋蛋"},
+                {"id":100, "title": "管理员"},
+            ];
+            layui.each(items, function(index, item) {
+                // console.log(item);
+                var checkBox = document.createElement("input");
+                checkBox.setAttribute("type", "checkbox");
+                checkBox.setAttribute("value", item.id);
+                checkBox.setAttribute("name", "like["+item.id+"]");
+                checkBox.setAttribute("lay-skin", 'primary');
+                checkBox.setAttribute("lay-event", '');
+                checkBox.setAttribute("lay-filter", 'LYA-rids');
+                checkBox.setAttribute("title", item.title);
+                if (d.params.owned.indexOf(item.id) != -1) {
+                    checkBox.setAttribute("checked", true);
+                }
+                $('#rids').append(checkBox);
+            });
+            form.render('checkbox');
+
+            // 监听checkbox
+            form.on('checkbox(LYA-rids)', function(data){
+
+                var field = {};
+                field.uid = d.params.id;
+                field.rid = data.value;
+                field.checked = data.elem.checked == true ? 1 : 0;
+                // console.log(field);
+
+                admin.req({
+                    url: '/api/account/setAdminroles'
+                    , type: "post"
+                    , headers: {
+                        token: layui.data('layuiAdmin').token
+                    }
+                    , data: field
+                    , success: function (res) {
+                        console.log(res.data);
+                        if (res.code == 0) {
+                            layui.table.reload("LAY-user-back-role");
+                        }
+                    }
+                });
+
+            });
+
+            form.on('submit(setrole-submit)', function(data){
+                layui.layer.closeAll();
+                layui.table.reload("LAY-user-back-role");
+            });
+
+        });
+    };
+
+
+</script>

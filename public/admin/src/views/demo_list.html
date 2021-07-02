@@ -1,0 +1,170 @@
+<title>合伙人管理 - XXXXXX列表</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>XXXXXX管理</cite></a>
+        <a><cite>XXXXXX列表</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+                    <div class="layui-form" lay-filter="LAY-XXXXXX-form-list">
+                        <div class="layui-btn-container">
+
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-green" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-add">添加</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-add">添加</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-orange" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-push">发布</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-black" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-soldOut">下架</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-red" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-cyan" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-white" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-gray" lay-submit lay-filter="LAY-XXXXXX-form-submit-filter-XXX">XXXXXX</button>
+
+                        </div>
+                    </div>
+
+                    <table class="layui-hide" id="LAY-XXXXXX-list" lay-filter="LAY-XXXXXX-list"></table>
+
+
+                    <script type="text/html" id="imgTpl">
+                        <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.XXXXXX }}>
+                    </script>
+                    <script type="text/html" id="buttonTpl">
+                        <!--行内事件使用lay-event来监听-->
+                        <button type="button" class="layui-btn layui-btn-xs" lay-event="buttonTpl">>迷你按钮</button>
+                    </script>
+                    <script type="text/html" id="switchTpl">
+                        {{# if ( d.client.isHot == 1 ){ }}
+                        <a class="layui-btn layui-btn-danger layui-bg-red layui-btn-xs" lay-event="isHotAction"><i class="layui-icon layui-icon-edit"></i>{{ d.client.isHot == 1 ? '热招' : '普招' }}</a>
+                        {{# } else { }}
+                        <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="isHotAction"><i class="layui-icon layui-icon-edit"></i>{{ d.client.isHot == 1 ? '热招' : '普招' }}</a>
+                        {{# } }}
+                    </script>
+                    <!--id-->
+                    <script type="text/html" id="idTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.id || ""}}</label>
+                    </script>
+                    <!--img-->
+                    <script type="text/html" id="imgTpl">
+                        <img style="display: inline-block; width: 32px; height: 32px" src='{{ d.user.avatar  || ""}}'>
+                    </script>
+                    <!--username-->
+                    <script type="text/html" id="usernameTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.username ||
+                            ""}}</label>
+                    </script>
+                    <!--phone-->
+                    <script type="text/html" id="phoneTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.phone ||
+                            ""}}</label>
+                    </script>
+                    <!--role-->
+                    <script type="text/html" id="roleTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.role.title ||
+                            ""}}</label>
+                    </script>
+                    <!--partnerNameTpl-->
+                    <script type="text/html" id="partnerNameTpl">
+                        {{# if(d.user.partner){}}
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.partner ?
+                            d.user.partner.username : ""}}</label>
+                        {{# } }}
+
+                    </script>
+                    <!--groeTpl-->
+                    <script type="text/html" id="groeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.groe || 0}}人</label>
+                    </script>
+                    <!--enterpriseTpl-->
+                    <script type="text/html" id="enterpriseTpl">
+                        {{#if(d.user.partner){}}
+                        <span class="layui-badge layui-bg-blue">{{ d.user.partner ? d.user.partner.enterprise.name : ""}}</span>
+                        {{#}}}
+
+                    </script>
+                    <!--create_time-->
+                    <script type="text/html" id="createTimeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.user.create_time ||
+                            ""}}</label>
+                    </script>
+
+                    <!--初级分红-->
+                    <script type="text/html" id="pgDividendTpl">
+                        {{# if( d.user.partner ){ }}
+                        <label style="display: inline-block; width: 100%; text-align: center">{{
+                            d.user.partner.enterprise.pg || ""}}</label>
+                        {{# } }}
+                    </script>
+                    <!--高级分红-->
+                    <script type="text/html" id="agDividendTpl">
+                        {{# if( d.user.partner ){ }}
+                        <label style="display: inline-block; width: 100%; text-align: center">{{
+                            d.user.partner.enterprise.ag || ""}}</label>
+                        {{# } }}
+                    </script>
+                    <!--战略分红-->
+                    <script type="text/html" id="egDividendTpl">
+                        {{# if( d.user.partner ){ }}
+                        <label style="display: inline-block; width: 100%; text-align: center">{{
+                            d.user.partner.enterprise.eg || ""}}</label>
+                        {{# } }}
+                    </script>
+                    <!--蛋蛋分红-->
+                    <script type="text/html" id="dgDividendTpl">
+                        {{# if( d.user.partner ){ }}
+                        <label style="display: inline-block; width: 100%; text-align: center">{{
+                            d.user.partner.enterprise.dg || ""}}</label>
+                        {{# } }}
+                    </script>
+                    <!--总分红-->
+                    <script type="text/html" id="totalDividendTpl">
+                        {{# if( d.user.partner ){ }}
+                        <span class="layui-badge layui-bg-gray">0.00</span>
+                        {{# } }}
+                    </script>
+                    <!--历史分红-->
+                    <script type="text/html" id="logDividendTpl">
+                        {{# if( d.user.partner ){ }}
+                        <button type="button" class="layui-btn layui-btn layui-btn-xs" lay-submit
+                                lay-event="logDividendEvent">查看
+                        </button>
+                        {{# } }}
+                    </script>
+
+
+
+
+                    <script type="text/html" id="Lay-XXXXXX-list-toolbar">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-event="add">添加职位</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-orange" lay-event="push">发布职位</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-black" lay-event="soldOut">下架职位</button>
+                        </div>
+                    </script>
+
+                    <script type="text/html" id="LAY-XXXXXX-list-tool-tages">
+                        <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑/查看</a>
+                        <a class="layui-btn layui-btn-normal layui-bg-red layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    layui.use('XXXXXX', layui.factory('XXXXXX')).use(['XXXXXX'], function(){
+       var XXXXXX = layui.XXXXXX;
+        XXXXXX.events.XXXXXXList();
+    });
+
+</script>

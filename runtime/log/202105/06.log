@@ -1,0 +1,213 @@
+---------------------------------------------------------------
+
+[2021-05-06T00:01:32+08:00] 192.168.1.3 POST 192.168.1.2/api/account/getInfoByToken
+[运行时间：0.076540s] [吞吐率：13.07req/s] [内存消耗：5,064.34kb] [文件加载：100]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/account/getInfoByToken',
+  'route' => 'index/Account/getInfoByToken',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Dart/2.12 (dart:io)',
+  'accept-encoding' => 'gzip',
+  'content-length' => '0',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'host' => '192.168.1.2',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000491s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.000587s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.001940s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_type` [ RunTime:0.000614s ]
+[ sql ] [ SQL ] SELECT `dd_roles_type`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`rid` AS `pivot__rid`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time`,`pivot`.`title` AS `pivot__title` FROM `dd_roles_type` INNER JOIN `dd_roles_pivot` `pivot` ON `pivot`.`rid`=`dd_roles_type`.`id` WHERE  `pivot`.`uid` = 5 ORDER BY `rid` ASC [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_partner_pivot` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_partner_pivot` WHERE  `uid` = 5 LIMIT 1 [ RunTime:0.000280s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_strategic_alliance` [ RunTime:0.000632s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 [ RunTime:0.000291s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000306s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_teacher` [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_basic_information` [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_teacher` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000304s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_hr` [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_hr` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_staff` [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_staff` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000205s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_signing_information` [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 5 LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 4 LIMIT 1 [ RunTime:0.000209s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 3 LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 2 LIMIT 1 [ RunTime:0.000255s ]
+---------------------------------------------------------------
+
+[2021-05-06T00:02:19+08:00] 192.168.1.3 POST 192.168.1.2/api/wallet/getMyWallet
+[运行时间：0.076506s] [吞吐率：13.07req/s] [内存消耗：4,802.28kb] [文件加载：95]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/wallet/getMyWallet',
+  'route' => 'index/WalletManager/getMyWallet',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Dart/2.12 (dart:io)',
+  'accept-encoding' => 'gzip',
+  'content-length' => '0',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'host' => '192.168.1.2',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000465s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.000561s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.000582s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_type` [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SELECT `dd_roles_type`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`rid` AS `pivot__rid`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time`,`pivot`.`title` AS `pivot__title` FROM `dd_roles_type` INNER JOIN `dd_roles_pivot` `pivot` ON `pivot`.`rid`=`dd_roles_type`.`id` WHERE  `pivot`.`uid` = 5 ORDER BY `rid` ASC [ RunTime:0.000341s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_wallet_virtual` [ RunTime:0.002840s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_wallet_virtual` WHERE  `uid` = 5 LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_wallet_virtual_logs` [ RunTime:0.001891s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_wallet_virtual_logs` WHERE  `uid` = 5  AND `uid` = 5 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_wallet_type` [ RunTime:0.002234s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_wallet_type` WHERE  `id` = 11 [ RunTime:0.000223s ]
+---------------------------------------------------------------
+
+[2021-05-06T00:06:41+08:00] 192.168.1.3 POST 192.168.1.2/api/account/getInfoByToken
+[运行时间：0.075800s] [吞吐率：13.19req/s] [内存消耗：5,064.32kb] [文件加载：100]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/account/getInfoByToken',
+  'route' => 'index/Account/getInfoByToken',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Dart/2.12 (dart:io)',
+  'accept-encoding' => 'gzip',
+  'content-length' => '0',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'host' => '192.168.1.2',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000492s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.000583s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.000616s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_type` [ RunTime:0.000561s ]
+[ sql ] [ SQL ] SELECT `dd_roles_type`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`rid` AS `pivot__rid`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time`,`pivot`.`title` AS `pivot__title` FROM `dd_roles_type` INNER JOIN `dd_roles_pivot` `pivot` ON `pivot`.`rid`=`dd_roles_type`.`id` WHERE  `pivot`.`uid` = 5 ORDER BY `rid` ASC [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_partner_pivot` [ RunTime:0.000590s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_partner_pivot` WHERE  `uid` = 5 LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_strategic_alliance` [ RunTime:0.000590s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_strategic_alliance` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_teacher` [ RunTime:0.000493s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_basic_information` [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_teacher` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000287s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_hr` [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SELECT `dd_factory_basic_information`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`fid` AS `pivot__fid`,`pivot`.`score` AS `pivot__score`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time` FROM `dd_factory_basic_information` INNER JOIN `dd_factory_hr` `pivot` ON `pivot`.`fid`=`dd_factory_basic_information`.`id` WHERE  `pivot`.`uid` = 5 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_staff` [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_staff` WHERE  `status` = 1  AND `uid` = 5 LIMIT 1 [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_factory_signing_information` [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 5 LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 4 LIMIT 1 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 3 LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_factory_signing_information` WHERE  `fid` = 2 LIMIT 1 [ RunTime:0.000209s ]
+---------------------------------------------------------------
+
+[2021-05-06T00:07:53+08:00] 192.168.1.3 POST 192.168.1.2/api/shop/myOrder
+[运行时间：0.076281s] [吞吐率：13.11req/s] [内存消耗：4,674.51kb] [文件加载：90]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/shop/myOrder',
+  'route' => 'index/ShopManager/myOrder',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Dart/2.12 (dart:io)',
+  'accept-encoding' => 'gzip',
+  'content-length' => '0',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'host' => '192.168.1.2',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000475s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_users` [ RunTime:0.000592s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_users` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_pivot` [ RunTime:0.001082s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_roles_type` [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SELECT `dd_roles_type`.*,`pivot`.`id` AS `pivot__id`,`pivot`.`uid` AS `pivot__uid`,`pivot`.`rid` AS `pivot__rid`,`pivot`.`create_time` AS `pivot__create_time`,`pivot`.`update_time` AS `pivot__update_time`,`pivot`.`title` AS `pivot__title` FROM `dd_roles_type` INNER JOIN `dd_roles_pivot` `pivot` ON `pivot`.`rid`=`dd_roles_type`.`id` WHERE  `pivot`.`uid` = 5 ORDER BY `rid` ASC [ RunTime:0.000417s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_shop_order` [ RunTime:0.003874s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_shop_order` WHERE  `uid` = 5 ORDER BY `update_time` DESC [ RunTime:0.000396s ]
+---------------------------------------------------------------
+
+[2021-05-06T00:07:59+08:00] 192.168.1.3 POST 192.168.1.2/api/shop/categorylist
+[运行时间：0.057375s] [吞吐率：17.43req/s] [内存消耗：4,341.38kb] [文件加载：83]
+[ info ] [ LANG ] /Users/lee/Desktop/dandankj/dd/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'rule' => 'api/shop/categorylist',
+  'route' => 'index/ShopManager/categorylist',
+  'option' => 
+  array (
+    'merge_rule_regex' => false,
+    'name' => 'api',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Dart/2.12 (dart:io)',
+  'content-type' => 'application/json; charset=utf-8',
+  'accept-encoding' => 'gzip',
+  'content-length' => '22',
+  'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.NQ.pgvXLAJjusY-uSadwh-uzeNVyRZiSzyRsb3FhdZwntw',
+  'host' => '192.168.1.2',
+)
+[ info ] [ PARAM ] array (
+  'page' => 1,
+  'limit' => 100,
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000462s ] mysql:host=0.0.0.0;port=3306;dbname=2020;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `dd_shop_type` [ RunTime:0.002337s ]
+[ sql ] [ SQL ] SELECT * FROM `dd_shop_type` ORDER BY `update_time` DESC LIMIT 0,100 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `dd_shop_type` [ RunTime:0.000220s ]

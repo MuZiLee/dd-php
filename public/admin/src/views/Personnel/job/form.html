@@ -1,0 +1,513 @@
+
+
+
+<div class="layui-fluid">
+    <form class="layui-form" lay-filter="LAY-jobs-form-list">
+        <div class="layui-tab layui-tab-card">
+            <!-- tab 选项卡-->
+            <ul class="layui-tab-title">
+                <li class="layui-this">招聘信息</li>
+            </ul>
+
+
+            <div class="layui-tab-content body">
+                <div class="layui-tab-item layui-show">
+                    <script type="text/html" template="">
+                        <input id="fid"
+                               name="fid"
+                               value="{{d.params.fid || ''}}"
+                               hidden>
+                        <input id="id"
+                               name="id"
+                               value="{{d.params.id || ''}}"
+                               hidden>
+                    </script>
+
+                    <div class="layui-form-item">
+                        <!--所在工厂-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">所在工厂</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <select lay-search=""
+                                        id="factory_name"
+                                        name="factory_name"
+                                        lay-filter="factory_name">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--职位类型-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">职位类型</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <select lay-search=""
+                                        id="job_type"
+                                        name="job_type"
+                                        lay-filter="job_type">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--是否热招-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">是否热招</label>
+                            <div class="layui-form-mid" style="color: white">*</div>
+                            <div class="layui-input-inline">
+                                <input type="checkbox" i
+                                       d="isHot"
+                                       name="isHot"
+                                       lay-skin="switch"
+                                       lay-text="是|否">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">综合薪资</label>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <script type="text/html" template="">
+                                    <input type="number"
+                                    id="minimum_search_range"
+                                    name="minimum_search_range"
+                                    placeholder="￥"
+                                    value="{{d.params.minimum_search_range || '0'}}"
+                                    autocomplete="off"
+                                    class="layui-input">
+                                </script>
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <script type="text/html" template="">
+                                    <input type="number"
+                                    id="maximum_salary_range"
+                                    name="maximum_salary_range"
+                                    value="{{d.params.maximum_salary_range || ''}}"
+                                    placeholder="￥"
+                                    autocomplete="off"
+                                    class="layui-input">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <!--职位名称-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">职位名称</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           name="job_name"
+                                           value="{{d.params.job_name || ''}}"
+                                           placeholder="请输入职名称"
+                                           class="layui-input">
+                                </script>
+                            </div>
+                        </div>
+
+
+                        <!--底薪-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">底薪</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="number"
+                                           name="base_salary"
+                                           value="{{d.params.base_salary || ''}}"
+                                           placeholder="底薪"
+                                           aria-required="true"
+                                           class="layui-input">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <!--计划招聘人数-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">招聘人数(人)</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="number"
+                                           class="layui-input"
+                                           name="number_of_recruiters"
+                                           id="number_of_recruiters"
+                                           value="{{ d.params.number_of_recruiters || '' }}"
+                                           placeholder="0"
+                                           required
+                                           lay-verify="required|number">
+                                </script>
+                            </div>
+                        </div>
+                        <!--计划招聘人数-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">已招人数(人)</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="number"
+                                           class="layui-input"
+                                           id="number_of_people_recruited"
+                                           name="number_of_people_recruited"
+                                           value="{{d.params.number_of_people_recruited || '0'}}"
+                                           placeholder="0"
+                                           required
+                                           lay-verify="required|number">
+                                </script>
+                            </div>
+                        </div>
+                        <!--发薪日期-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">发薪日期</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="job_payroll_time"
+                                           name="job_payroll_time"
+                                           value="{{d.params.job_payroll_time || ''}}"
+                                           placeholder="发薪日期">
+                                </script>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <!--身份证-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">身份证信息</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="certificates"
+                                           name="certificates"
+                                           value="{{d.params.certificates || ''}}"
+                                           placeholder="身份证">
+                                </script>
+                            </div>
+                        </div>
+                        <!--照片-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">照片</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="phto"
+                                           name="phto"
+                                           value="{{ d.params.phto || ''}}"
+                                           placeholder="照片">
+                                </script>
+                            </div>
+                        </div>
+                        <!--毕业证-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">毕业证</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="diploma"
+                                           name="diploma"
+                                           value="{{d.params.diploma || ''}}"
+                                           placeholder="毕业证">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="layui-form-item">
+                        <!--毕业证明复印件-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">毕业证明复印件</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="diploma_copy"
+                                           name="diploma_copy"
+                                           value="{{d.params.diploma_copy || ''}}"
+                                           placeholder="毕业证明复印件">
+                                </script>
+                            </div>
+                        </div>
+                        <!--无尘服-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">无尘服</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="dust_free_clothes"
+                                           name="dust_free_clothes"
+                                           value="{{d.params.dust_free_clothes ||''}}"
+                                           placeholder="无尘服">
+                                </script>
+                            </div>
+                        </div>
+                        <!--人脸识别-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">人脸识别</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="face_recognition"
+                                           name="face_recognition"
+                                           value="{{d.params.face_recognition || ''}}"
+                                           placeholder="人脸识别">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <!--纹身-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">纹身</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="tattoo"
+                                           name="tattoo"
+                                           value="{{d.params.tattoo || ''}}"
+                                           placeholder="纹身">
+                                </script>
+                            </div>
+                        </div>
+                        <!--烟疤-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">烟疤</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="smoke_scars"
+                                           name="smoke_scars"
+                                           value="{{d.params.smoke_scars || ''}}"
+                                           placeholder="烟疤">
+                                </script>
+                            </div>
+                        </div>
+                        <!--英文要求-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">英文要求</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="english_requirements"
+                                           name="english_requirements"
+                                           value="{{d.params.english_requirements || ''}}"
+                                           placeholder="英文要求">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <!--算术要求-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">算术要求</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="arithmetic_requirements"
+                                           name="arithmetic_requirements"
+                                           value="{{d.params.arithmetic_requirements || ''}}"
+                                           placeholder="算术要求">
+                                </script>
+                            </div>
+                        </div>
+                        <!--体内检查-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">体内检查</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template>
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="in_vivo_examination"
+                                           name="in_vivo_examination"
+                                           value="{{d.params.in_vivo_examination || ''}}"
+                                           placeholder="体内检查">
+                                </script>
+                            </div>
+                        </div>
+                        <!--工作环境-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">工作环境</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template>
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="job_environment"
+                                           name="job_environment"
+                                           value="{{d.params.job_environment || ''}}"
+                                           placeholder="工作环境">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <!--交通-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">交通</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template>
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="traffic"
+                                           name="traffic"
+                                           value="{{d.params.traffic || ''}}"
+                                           placeholder="交通">
+                                </script>
+                            </div>
+                        </div>
+                        <!--考试-->
+                        <div class="layui-inline">
+                            <label class="layui-form-label">考试</label>
+                            <div class="layui-form-mid" style="color: red">*</div>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template>
+                                    <input type="text"
+                                           class="layui-input"
+                                           id="teturn_to_factory_rules"
+                                           name="teturn_to_factory_rules"
+                                           value="{{d.params.teturn_to_factory_rules || ''}}"
+                                           placeholder="考试">
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--职位说明-->
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">职位说明</label>
+
+                        <div class="layui-input-block">
+                            <script type="text/html" template="">
+                                <textarea placeholder="请输入内容"
+                                          class="layui-textarea"
+                                          style="width: 91%"
+                                          id="job_description"
+                                          name="job_description"
+                                          value="">
+                                    {{d.params.job_description || ''}}
+                                </textarea>
+                            </script>
+                        </div>
+                    </div>
+                    <!--合同说明-->
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">合同说明</label>
+
+                        <div class="layui-input-block">
+                            <script type="text/html" template="">
+                                <textarea placeholder="合同说明"
+                                          class="layui-textarea"
+                                          style="width: 91%"
+                                          id="contract_note"
+                                          name="contract_note">
+                                        {{d.params.contract_note || ''}}
+                                </textarea>
+                            </script>
+                        </div>
+                    </div>
+
+                    <!--薪资结构-->
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">薪资结构</label>
+                        <div class="layui-input-block">
+                            <script type="text/html" template="">
+                                <textarea placeholder="薪资结构"
+                                          class="layui-textarea"
+                                          style="width: 91%"
+                                          id="salary_structure"
+                                          name="salary_structure">
+                                        {{d.params.salary_structure || ''}}
+                                </textarea>
+                            </script>
+
+                        </div>
+                    </div>
+
+                    <!--温馨提示-->
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">温馨提示</label>
+                        <div class="layui-input-block">
+                            <script type="text/html" template="">
+                                <textarea placeholder="温馨提示"
+                                          class="layui-textarea"
+                                          style="width: 91%"
+                                          id="reminder"
+                                          name="reminder">
+                                        {{d.params.reminder || ''}}
+                                </textarea>
+                            </script>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <script type="text/html" template>
+                {{# if(!d.params.id) { }}
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-bg-blue" lay-submit="" lay-filter="LAY-job-button-event-add">立即提交</button>
+                        </div>
+                    </div>
+                {{# } else { }}
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-bg-orange" lay-submit="" lay-filter="LAY-job-button-event-update">更新</button>
+                        </div>
+                    </div>
+                {{# } }}
+            </script>
+
+
+        </div>
+
+
+    </form>
+</div>
+
+<!--<script>-->
+    <!--layui.use(['job']);-->
+<!--</script>-->

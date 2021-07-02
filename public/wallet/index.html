@@ -1,0 +1,167 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的钱包</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/slider.js"></script>
+    <link href="../admin/start/layui/css/layui.css">
+</head>
+<body>
+     
+<section class="aui-flexView">
+
+
+    <section class="aui-scrollView">
+        <!--header-->
+        <div class="aui-palace aui-palace-one">
+            <a href="javascript:;" class="aui-palace-grid">
+                <div class="aui-palace-grid-icon">
+                    <img src="images/icon-wallet-001.png" alt="">
+                </div>
+                <div class="aui-palace-grid-text">
+                    <h2>零钱</h2>
+                    <p id="money" name="money">0.00</p>
+                </div>
+            </a>
+            <a href="javascript:;" class="aui-palace-grid">
+                <div class="aui-palace-grid-icon">
+                    <img src="images/icon-wallet-002.png" alt="">
+                </div>
+                <div class="aui-palace-grid-text">
+                    <h2>蛋币</h2>
+                    <p id="egg" name="egg">0.00</p>
+                </div>
+            </a>
+
+        </div>
+        <div class="divHeight"></div>
+        <div class="aui-flex b-line">
+            <div class="aui-flex-box">
+                <h2>钱包服务</h2>
+            </div>
+        </div>
+
+        <!--组-->
+        <div class="aui-palace aui-palace-two">
+            <a datatype="Withdrawal" class="aui-palace-grid">
+                <div class="aui-palace-grid-icon">
+                    <img src="images/icon-wallet-003.png" alt="">
+                </div>
+                <div class="aui-palace-grid-text">
+                    <h2>提现</h2>
+                </div>
+            </a>
+            <a datatype="Overdraft" class="aui-palace-grid">
+                <div class="aui-palace-grid-icon">
+                    <img src="images/icon-wallet-006.png" alt="">
+                </div>
+                <div class="aui-palace-grid-text">
+                    <h2>预支</h2>
+                </div>
+            </a>
+            <a datatype="Commission" class="aui-palace-grid">
+                <div class="aui-palace-grid-icon">
+                    <img src="images/icon-wallet-013.png" id="佣金提现" name="佣金提现" alt="">
+                </div>
+                <div class="aui-palace-grid-text">
+                    <h2 id="佣金提现标题">佣金提现</h2>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+
+</section>
+<script type="text/javascript" src="../admin/start/layui/layui.js"></script>
+<script>
+    layui.use(['jquery', 'element', 'form', 'layer'], function() {
+
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+
+
+        var uid;
+        $(function() {
+            //返回当前 URL 的查询部分（问号 ? 之后的部分）。
+            var urlParameters = location.search;
+            //声明并初始化接收请求参数的对象
+            var requestParameters = new Object();
+            //如果该求青中有请求的参数，则获取请求的参数，否则打印提示此请求没有请求的参数
+            if(urlParameters.indexOf('?') != -1) {
+                //获取请求参数的字符串
+                var parameters = decodeURI(urlParameters.substr(1));
+                //将请求的参数以&分割中字符串数组
+                parameterArray = parameters.split('&');
+                //循环遍历，将请求的参数封装到请求参数的对象之中
+                for(var i = 0; i < parameterArray.length; i++) {
+                    requestParameters[parameterArray[i].split('=')[0]] = (parameterArray[i].split('=')[1]);
+                }
+            }
+            uid = requestParameters.id;
+            console.log(requestParameters);
+            return requestParameters;
+        });
+
+
+        /// 获取历史签到
+        $.ajax({
+            type: "post"
+            ,url: "/api/wallet/get"
+            ,dataType: "json"
+            ,data: {
+                uid: uid
+            }
+            ,success: function(res) {
+                console.log(res["code"]);
+
+
+
+
+
+                if(res.date) {
+                    //给表单赋值
+                    var money = document.getElementById("money");
+                    money.innerText= res.date.money;
+
+                    var egg = document.getElementById("egg");
+                    egg.innerText= res.data.egg;
+                } else  {
+                    //给表单赋值
+                    var money = document.getElementById("money");
+                    money.innerText= "0.00";
+
+                    var egg = document.getElementById("egg");
+                    egg.innerText= "0.00";
+                }
+            }
+        });
+
+
+        $(document).on("click", "a[datatype='Withdrawal']", function(event){
+            layer.msg("提现");
+        });
+        $(document).on("click", "a[datatype='Overdraft']", function(event){
+            layer.msg("预支");
+        });
+        $(document).on("click", "a[datatype='Commission']", function(event){
+            layer.msg("佣金");
+        });
+
+
+
+    });
+
+
+</script>
+</body>
+
+</html>

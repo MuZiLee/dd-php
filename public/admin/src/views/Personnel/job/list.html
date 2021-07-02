@@ -1,0 +1,121 @@
+<title>工厂与职位管理 - 职位列表</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>工厂与职位管理</cite></a>
+        <a><cite>职位列表</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+                    <table class="layui-hide" id="LAY-job-list" lay-filter="LAY-job-list"></table>
+                    <script type="text/html" id="imgTpl">
+                        <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.logo }}>
+                    </script>
+
+                    <script type="text/html" id="Lay-job-list-toolbar">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-blue" lay-event="add">添加职位</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-orange" lay-event="push">发布职位</button>
+                            <button class="layui-btn layuiadmin-btn-useradmin layui-bg-black" lay-event="soldOut">下架职位</button>
+                        </div>
+                    </script>
+
+                    <script type="text/html" id="LAY-job-list-toolbar-tages">
+                        <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="lookinfo"><i class="layui-icon layui-icon-search"></i>编辑/查看</a>
+                        <a class="layui-btn layui-btn-normal layui-bg-red layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-edit"></i>删除</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--, {width: 70, align: 'center', title: '状态', fixed: 'left', templet: "#statusTpl"}-->
+<!--状态-->
+<script type="text/html" id="statusTpl">
+    {{# if(d.status == 0) { }}
+    <span class="layui-badge layui-bg-orange">待审核</span>
+    {{# } else if(d.status == 1) { }}
+    <span class="layui-badge layui-bg-blue">已上架</span>
+    {{# } else { }}
+    <span class="layui-badge layui-bg-black">已下架</span>
+    {{# } }}
+</script>
+
+<!--ID-->
+<script type="text/html" id="idTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.id || ""}}</label>
+</script>
+
+<!--职位名称-->
+<script type="text/html" id="job_nameTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.job_name || ""}}</label>
+</script>
+<!--, {width: 150, align: 'center', title: '职位类型', sort: true, templet: "#job_typeTpl"}-->
+<!--职位类型-->
+<script type="text/html" id="job_typeTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.job_type.title || ""}}</label>
+</script>
+<!--, {width: 100, align: 'center', title: '热招', sort: true, templet: "#switchTpl"}-->
+<!--热招-->
+<script type="text/html" id="isHotTpl">
+    <!-- 这里的 checked 的状态只是演示 -->
+    {{# if ( d.isHot == 1 ){ }}
+    <a class="layui-btn layui-btn-danger layui-bg-red layui-btn-xs" lay-event="isHotAction"><i class="layui-icon layui-icon-edit"></i>普招</a>
+    {{# } else { }}
+    <a class="layui-btn layui-btn-danger layui-bg-green layui-btn-xs" lay-event="isHotAction"><i class="layui-icon layui-icon-edit"></i> 普招</a>
+    {{# } }}
+</script>
+<!--, {width: 300, align: 'center', title: '所在工厂', sort: true, templet: "#factory_nameTpl"}-->
+<!--所在工厂-->
+<script type="text/html" id="factory_nameTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.factory_name || ""}}</label>
+</script>
+<!--, {width: 100, align: 'center', title: '省', sort: true, templet: "#provinceTpl"}-->
+<!--省-->
+<script type="text/html" id="provinceTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.province || ""}}</label>
+</script>
+<!--, {width: 100, align: 'center', title: '市', sort: true, templet: "#cityTpl"}-->
+<!--市-->
+<script type="text/html" id="cityTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.city || ""}}</label>
+</script>
+<!--, {width: 150, align: 'center', title: '区/县/镇', sort: true, templet: "#districtTpl"}-->
+<!--区/县/镇-->
+<script type="text/html" id="districtTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.district || ""}}</label>
+</script>
+<!--, {width: 300, align: 'center', title: '地址', sort: true, templet: "#addresTpl"}-->
+<!--地址-->
+<script type="text/html" id="addresTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.factory.addres || ""}}</label>
+</script>
+<!--, {width: 200, align: 'center', title: '底薪', sort: true, templet: "#base_salaryTpl"}-->
+<!--底薪-->
+<script type="text/html" id="base_salaryTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.base_salary || ""}}</label>
+</script>
+<!--, {width: 200, align: 'center', title: '综合薪资', sort: true, templet: "#minimum_search_rangeTpl"}-->
+<!--综合薪资-->
+<script type="text/html" id="minimum_search_rangeTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.minimum_search_range + "-" + d.maximum_salary_range}}</label>
+</script>
+<!--综合薪资-->
+<script type="text/html" id="create_timeTpl">
+    <label style="display: inline-block; width: 100%; text-align: center">{{ d.create_time }}</label>
+</script>
+
+
+<script>
+    layui.use('jobs', layui.factory('jobs'));
+</script>

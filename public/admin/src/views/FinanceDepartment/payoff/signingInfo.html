@@ -1,0 +1,95 @@
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <script type="text/html" template lay-done="layui.data.done(d);"></script>
+
+                <div class="layui-card-header">签单信息</div>
+                <div class="layui-card-body" pad15>
+
+                    <div class="layui-form" lay-filter="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">合作方式</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="cooperation_mode" name="cooperation_mode" value="{{d.params.signingInfo.cooperation_mode}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">签单价</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="signed_unit_price" name="signed_unit_price" value="{{d.params.signingInfo.signed_unit_price}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">员工单价</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="employee_unit_price" name="employee_unit_price" value="{{d.params.signingInfo.employee_unit_price}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">驻场老师提成</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="commission_for_teacher" name="commission_for_teacher" value="{{d.params.signingInfo.commission_for_teacher}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">业务员提成</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="commission_for_salesman" name="commission_for_salesman" value="{{d.params.signingInfo.commission_for_salesman}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">税金</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="income_tax" name="income_tax" value="{{d.params.signingInfo.income_tax}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">保险费</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="insurance_premium" name="income_tax" value="{{d.params.signingInfo.insurance_premium}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">管理费</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input class="layui-input" id="management_expense" name="income_tax" value="{{d.params.signingInfo.management_expense}}" readonly>
+                                </script>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.data.done = function (d) {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form;
+            var table = layui.table;
+
+
+        });
+    }
+
+</script>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="商城" http-equiv="keywords">
+    <meta name="description" content="商城,购物">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <title>购物中心</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+
+    <!-- public_css -->
+    <link rel="stylesheet" type="text/css" href="css/public/public_lib.css">
+
+    <!-- js -->
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        var $body = $("body");
+        var setCoverOpacity = function() {
+            $body.find(".search-box-cover").css({
+                opacity: ((($body.scrollTop() / 150) > 0.9) ? 0.9 : ($body.scrollTop() / 150))
+            })
+        };
+        //初始化设置背景透明度
+        setCoverOpacity();
+        //监听滚动条事件，改变透明度
+        $(window).scroll(function() {
+            setCoverOpacity();
+        });
+    });
+</script>
+
+<div class="module-content">
+    <!--banner图-->
+    <div class="swiper-container banner">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide">
+                <img src="images/banner.jpg">
+            </li>
+<!--            <li class="swiper-slide">-->
+<!--                <img src="images/banner01.jpg">-->
+<!--            </li>-->
+<!--            <li class="swiper-slide">-->
+<!--                <img src="images/banner.jpg">-->
+<!--            </li>-->
+<!--            <li class="swiper-slide">-->
+<!--                <img src="images/banner01.jpg">-->
+<!--            </li>-->
+        </ul>
+        <div class="swiper-pagination sp01"></div>
+        <script>
+            var swiper = new Swiper(".banner", {
+                pagination: ".sp01",
+                paginationClickable: true,
+                autoplay: "3000",
+                loop: "ture",
+                speed: 500,
+                autoplayDisableOnInteraction: false
+            });
+        </script>
+    </div>
+
+    <!-- 图标导航icon -->
+    <div class="swiper-container nav_iconbox">
+        <div class="swiper-wrapper">
+            <!-- 每个ul有8个li，不能多于8个 -->
+            <ul class="swiper-slide">
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon01.jpg">
+                        <span>经典男鞋</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon02.jpg">
+                        <span>女鞋</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon03.jpg">
+                        <span>T恤</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon04.jpg">
+                        <span>外套/卫衣</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon05.jpg">
+                        <span>夏季新款</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon06.jpg">
+                        <span>户外箱包</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon07.jpg">
+                        <span>体育器材</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="exchange.html">
+                        <img src="images/nav_icon08.jpg">
+                        <span>积分专区</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="swiper-slide">
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon04.jpg">
+                        <span>其他栏目</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <img src="images/nav_icon07.jpg">
+                        <span>健身器材</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="swiper-pagination icon01"></div>
+        <script>
+            var swiper = new Swiper(".nav_iconbox", {
+                pagination: ".icon01",
+                paginationClickable: true,
+                speed: 500,
+                autoplayDisableOnInteraction: false
+            });
+        </script>
+    </div>
+
+    <!-- 新品推荐 -->
+    <div class="new_goods bgwh mb6">
+        <div class="index_title rel">
+            <h1>
+                <a>新品推荐</a>
+            </h1>
+            <i></i>
+        </div>
+        <div class="nine_goods_pic">
+            <ul>
+                <li>
+                    <a href="goods.html">
+                        <img src="images/pic01.jpg">
+                        <p>颜文明专业网鞋复古休闲运动鞋</p>
+                        <span>￥699.00</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="goods.html">
+                        <img src="images/pic02.jpg">
+                        <p>颜文明专业网鞋</p>
+                        <span>￥299.00</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="goods.html">
+                        <img src="images/pic03.jpg">
+                        <p>李宁运动套装健身服男三件套速干衣跑步训练服紧身衣健身房压缩衣 黑色三件套=短袖+短裤+健身裤 L(175)</p>
+                        <span>￥499.00</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="goods.html">
+                        <img src="images/pic08.jpg">
+                        <p>颜文明专业网鞋复古休闲运动鞋</p>
+                        <span>￥399.00</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="goods.html">
+                        <img src="images/pic05.jpg">
+                        <p>耐克跑步鞋男飞织气垫鞋春夏季新款网面透气减震慢跑鞋运动鞋</p>
+                        <span>￥299.00</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="goods.html">
+                        <img src="images/pic06.jpg">
+                        <p>Adidas阿迪达斯男装 新款休闲男装</p>
+                        <span>￥199.00</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer_box">
+        <div class="footer">
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="foot_menu">
+        <ul>
+            <li class="cur">
+                <a href="index.html">
+                    <i><img src="images/menu_icon01_r.png"></i>
+                    <span>首 页</span>
+                </a>
+            </li>
+            <li>
+                <a href="catalog.html">
+                    <i><img src="images/menu_icon02.png"></i>
+                    <span>分 类</span>
+                </a>
+            </li>
+            <li class="gwc">
+                <a href="flow.html">
+                    <i><img src="images/menu_icon03.png"></i>
+                    <span>购物车</span>
+                    <em>3</em>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $(".search-box").mousedown(
+            function() {
+                $(".search_bomb_box").show()
+                $(".module-layer").hide()
+                $(".module-content").hide()
+            }
+        )
+        $(".search_bomb_box .search_top>a").mousedown(
+            function() {
+                $(".search_bomb_box").hide()
+                $(".module-layer").show()
+                $(".module-content").show()
+            }
+        )
+    })
+</script>
+
+
+</body>
+</html>

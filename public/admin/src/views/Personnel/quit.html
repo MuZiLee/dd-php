@@ -1,0 +1,64 @@
+<title>离职</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>人事部</cite></a>
+        <a><cite>离职</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div class="layui-card-body">
+            <script type="text/html" id="quit-table-header-list" lay-filter="quit-table-header-list">
+                <button class="layui-btn layui-btn-sm layui-bg-green" lay-event="quit-audit">审核</button>
+            </script>
+            <table class="layui-hide" id="quit-table-list" lay-filter="quit-table-list"></table>
+
+            <script type="text/html" id="logsTpl">
+                <button button type="button" class="layui-btn layui-btn-xs layui-bg-blue" lay-event="logsTpl">查看</button>
+            </script>
+
+            <script type="text/html" id="imagesTpl">
+                <button button type="button" class="layui-btn layui-btn-xs layui-bg-blue" lay-event="imagesTpl">查看</button>
+            </script>
+
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.user.avatar }}>
+            </script>
+
+            <script type="text/html" id="factoryTpl">
+                <label>{{ d.factory.factory_name }}</label>
+            </script>
+            <script type="text/html" id="jobTpl">
+                <label>{{ d.job.job_name }}</label>
+            </script>
+
+            <script type="text/html" id="titleTpl">
+                <label>{{ d.etype.title }}</label>
+            </script>
+            <script type="text/html" id="usernameTpl">
+                <label>{{ d.user.username }}</label>
+            </script>
+
+            <script type="text/html" id="logsroleTpl">
+                {{# if(d.logs.pop()){ }}
+                <label>{{ d.logs.pop().role.title }}</label>
+                {{# } }}
+            </script>
+
+            <script type="text/html" id="createTimeTpl">
+                <label>{{ d.create_time }}</label>
+            </script>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    layui.use('personnel', layui.factory('personnel'));
+</script>

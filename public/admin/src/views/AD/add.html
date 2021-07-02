@@ -1,0 +1,295 @@
+
+
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <script type="text/html" template="">
+
+                    {{# if(d.params.adType === "startAd") { }}
+                    {{# if(d.params.type === "edit") { }}
+                    <div class="layui-card-header layui-bg-green" name="tip">编辑/查看启动广告</div>
+                    {{# } else { }}
+                    <div class="layui-card-header layui-bg-green" name="tip">添加启动广告</div>
+                    {{# } }}
+                    {{# } else if(d.params.adType === "bannerAd") { }}
+                    {{# if(d.params.type === "edit") { }}
+                    <div class="layui-card-header layui-bg-blue" name="tip">编辑/查看Banner广告</div>
+                    {{# } else { }}
+                    <div class="layui-card-header layui-bg-blue" name="tip">添加Banner广告</div>
+                    {{# } }}
+                    {{# } else if(d.params.adType === "jobAd") { }}
+                    {{# if(d.params.type === "edit") { }}
+                    <div class="layui-card-header layui-bg-orange" name="tip">编辑/查看职位广告</div>
+                    {{# } else { }}
+                    <div class="layui-card-header layui-bg-orange" name="tip">添加职位广告</div>
+                    {{# } }}
+                    {{# } }}
+
+                </script>
+                <div class="layui-card-body" pad15>
+
+                    <div class="layui-form" lay-filter="form-ad-add">
+
+                        <script type="text/html" template="">
+                            {{# if(d.params.adType === "startAd") { }}
+                            {{# if(d.params.type === "edit") { }}
+                            <input type="text" name="tip" value="编辑/查看启动广告" hidden>
+                            {{# } else { }}
+                            <input type="text" name="tip" value="添加启动广告" hidden>
+                            {{# } }}
+                            {{# } else if(d.params.adType === "bannerAd") { }}
+                            {{# if(d.params.type === "edit") { }}
+                            <input type="text" name="tip" value="编辑/查看Banner广告" hidden>
+                            {{# } else { }}
+                            <input type="text" name="tip" value="添加Banner广告" hidden>
+                            {{# } }}
+                            {{# } else if(d.params.adType === "jobAd") { }}
+                            {{# if(d.params.type === "edit") { }}
+                            <input type="text" name="tip" value="编辑/查看职位广告" hidden>
+                            {{# } else { }}
+                            <input type="text" name="tip" value="添加职位广告" hidden>
+                            {{# } }}
+                            {{# } }}
+
+                            {{# if (d.params.type === "edit") { }}
+                            <div class="layui-form-item" hidden>
+                                <label class="layui-form-label">ID</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="id" value="{{ d.params.id || ''}}" readonly class="layui-input">
+                                </div>
+                            </div>
+                            {{# } }}
+                        </script>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template>
+                                    <input type="text" name="title" value="{{ d.params.title || ''}}" placeholder="必需" class="layui-input">
+                                </script>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">打开广告页面后，显示的页面标题</div>
+                        </div>
+
+                        <script type="text/html" template="">
+                            {{# if (d.params.adType === "startAd") { }}
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">子标题</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="subtitle" lay-verify="subtitle" value="{{ d.params.subtitle || ''}}" autocomplete="off" class="layui-input">
+                                    </div>
+                                <div class="layui-form-mid layui-word-aux">可选</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">倒计时</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="time" lay-verify="time" value="{{ d.params.time || 10}}" autocomplete="off" placeholder="秒" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">默认10秒</div>
+                                </div>
+                            {{# } }}
+                        </script>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">广告图</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input name="image" lay-verify="required" id="image" placeholder="点击上传图片" value="{{ d.params.image || ''}}" class="layui-input">
+                                </script>
+                            </div>
+                            <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                                <button type="button" class="layui-btn layui-btn-primary" id="satartAdImageUpload">
+                                    <i class="layui-icon">&#xe67c;</i>上传图片
+                                </button>
+                                <button class="layui-btn layui-btn-primary" layadmin-event="imagePreview">查看图片</button >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">跳转地址</label>
+                            <div class="layui-input-inline">
+                                <script type="text/html" template="">
+                                    <input type="url" name="url" value="{{ d.params.url || ''}}" lay-verify="url" required placeholder="http://www.baidu.com" autocomplete="off" class="layui-input">
+                                </script>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">广告链接,必需</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+
+                    <script type="text/html" template="">
+
+                        {{# if(d.params.type === "edit") { }}
+                        <button class="layui-btn layui-bg-orange" lay-submit lay-filter="form-add-update">更新</button>
+                        {{# } else { }}
+                        <button class="layui-btn layui-bg-blue" lay-submit lay-filter="form-add-submit">提交</button>
+                        {{# } }}
+
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['upload', 'jquery', 'table', 'form'], function() {
+        var upload = layui.upload;
+        var admin  = layui.admin;
+        var $      = layui.jquery;
+        var form   = layui.form;
+        var table   = layui.table;
+
+        form.render(null, 'form-ad-add');
+
+        //上传image
+        upload.render({
+            url: '/api/upload/one'
+            ,elem: '#satartAdImageUpload'
+            ,accept: 'image'
+            ,headers: { //通过 request 头传递
+                token: layui.data('layuiAdmin').token
+            }
+            ,done: function(res){
+                console.log(JSON.stringify(res.data));
+
+                if(res.code === 0){
+                    console.log(res.data.url);
+                    form.val("form-ad-add", {
+                        "image": res.data.url
+                    });
+                } else {
+                    layer.msg(res.msg, {icon: 5});
+                }
+            }
+        });
+        //查看image
+        admin.events.imagePreview = function(othis){
+            var field = form.val("form-ad-add");
+            layer.photos({
+                photos: {
+                    "title": "查看头像" //相册标题
+                    ,"data": [{
+                        "src": field.image
+                    }]
+                }
+                ,shade: 0.01
+                ,closeBtn: 1
+                ,anim: 5
+            });
+        };
+
+        /**
+         * 添加广告
+         */
+        form.on('submit(form-add-submit)', function(data){
+            var field = form.val("form-ad-add");
+
+            if (field.tip == "添加启动广告" || field.tip == "编辑/查看启动广告") {
+                field.type = 0;
+                field.subtitle = "启动广告";
+            } else if (field.tip == "添加Banner广告" || field.tip == "编辑/查看Banner广告") {
+                field.type = 1;
+                field.subtitle = "Banner广告";
+            } else  {
+                field.type = 2;
+                field.subtitle = "职位广告";
+            }
+
+            if(!field.title) {
+                layer.msg("没有标题");
+                return;
+            }
+            if(!field.image) {
+                layer.msg("没有广告图");
+                return;
+            }
+            if(!field.url) {
+                layer.msg("广告链接是必需要的");
+                return;
+            }
+
+
+            admin.req({
+                url: '/api/ad/add'
+                ,type: 'post'
+                ,data: field
+                ,success: function(res) {
+                    layui.table.render();
+                    layer.msg('添加完成', {
+                        icon: 1,
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        layer.closeAll();
+                        if (field.type == 0) {
+                            layui.table.reload("LAY-startAd-list");
+                        }
+                        if (field.type == 1) {
+                            layui.table.reload("LAY-bannerAd-list");
+                        }
+                        if (field.type == 2) {
+                            layui.table.reload("LAY-jobAd-list");
+                        }
+                    });
+
+                }
+            });
+        });
+
+        /**
+         * 更新广告
+         */
+        form.on('submit(form-add-update)', function(data){
+            var field = form.val("form-ad-add");
+            console.log(JSON.stringify(field));
+            if(!field.title) {
+                layer.msg("没有标题");
+                return;
+            }
+            if(!field.image) {
+                layer.msg("没有广告图");
+                return;
+            }
+            if(!field.url) {
+                layer.msg("广告链接是必需要的");
+                return;
+            }
+
+
+            admin.req({
+                url: '/api/ad/update'
+                ,type: 'post'
+                ,data: field
+                ,success: function(res) {
+
+                    layer.msg('更新完成', {
+                        icon: 1,
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        layer.closeAll();
+                        if (field.type == 0) {
+                            layui.table.reload("LAY-startAd-list");
+                        }
+                        if (field.type == 1) {
+                            layui.table.reload("LAY-bannerAd-list");
+                        }
+                        if (field.type == 2) {
+                            layui.table.reload("LAY-jobAd-list");
+                        }
+                    });
+
+                }
+            });
+        });
+
+    });
+</script>

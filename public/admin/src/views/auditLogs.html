@@ -1,0 +1,82 @@
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <script type="text/html" template lay-done="layui.data.done(d);"></script>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="LAY-adit-logs-list" lay-filter="LAY-adit-logs-list"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    layui.data.done = function (d) {
+        layui.use(['form', 'table'], function () {
+            var form = layui.form;
+            var table = layui.table;
+            console.log("加载 audit logs");
+            console.log(JSON.stringify(d));
+
+            var datatype = 0;
+            if (d.params.etid === 1 ||
+                d.params.etid === 2 ||
+                d.params.etid === 3 ||
+                d.params.etid === 4 ||
+                d.params.etid === 5 ||
+                d.params.etid === 6 ||
+                d.params.etid === 11
+            ) {
+                datatype = 0;
+            } else  {
+                datatype = 1;
+            }
+            console.log(datatype);
+            console.log("/api/factory/logs?eid="+d.params.id);
+
+
+            //方法渲染：
+            table.render({
+                elem: "#LAY-adit-logs-list"
+                , url: datatype === 0 ? "/api/factory/logs?eid="+d.params.id : "/api/factory/staffLogs?eid="+d.params.id
+                , cols: [[
+                    {field: 'id', title: 'ID', width: 80}
+                    , {title: '事件类型', width: 100, templet: function (data) {
+                            console.log(data);
+                            return data.etype.title;
+                    }}
+                    , {title: '状态', width: 70, templet: function (data) {
+                        if (data.status === 1) {
+                            return '<span class="layui-badge layui-bg-blue">通过</span>';
+                        } else {
+                            return '<span class="layui-badge layui-bg-gray">驳回</span>';
+                        }
+                    }}
+                    , {title: '审核人', width: 100, templet: function (data) {
+                        if (datatype === 0) {
+                            return data.user.username;
+                        } else {
+                            return data.ruser.username;
+                        }
+                    }}
+                    , {title: '审核角色', width: 100, templet: function (data) {
+                        return data.role.title;
+                    }}
+                    , {field: 'remark', title: '备注', minWidth: 100}
+                    , {field: 'create_time', title: '审核时间', minWidth: 100}
+                ]]
+                , page: true
+                , limit: 15
+                , limits: [10, 15, 20, 30, 40, 50, 100]
+                , text: {
+                    none: '暂无相关数据'
+                }
+            });
+
+        });
+    };
+
+</script>

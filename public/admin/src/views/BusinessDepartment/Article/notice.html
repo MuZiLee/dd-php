@@ -1,0 +1,180 @@
+
+<title>添加文章</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>文章管理</cite></a>
+        <a><cite>文章列表</cite></a>
+        <a><cite>添加文章</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">公告</div>
+                <div class="layui-card-body" pad15>
+
+                    <div class="layui-form" lay-filter="notice-form">
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">描述</label>
+                            <div class="layui-input-block">
+                                <textarea name="desn" placeholder="公告简单描述" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" id="visible">
+                            <label class="layui-form-label">谁可看</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="visible" value=1 title="普通用户" checked="">
+                                <input type="checkbox" name="visible" value=2 title="会员">
+                                <input type="checkbox" name="visible" value=3 title="工人">
+                                <input type="checkbox" name="visible" value=4 title="初级合伙人">
+                                <input type="checkbox" name="visible" value=5 title="高级合伙人">
+                                <input type="checkbox" name="visible" value=6 title="准高级合伙人">
+                                <input type="checkbox" name="visible" value=7 title="战略联盟">
+                                <input type="checkbox" name="visible" value=8 title="驻厂老师">
+                                <input type="checkbox" name="visible" value=9 title="驻场经理">
+                                <input type="checkbox" name="visible" value=10 title="工厂HR">
+                                <input type="checkbox" name="visible" value=11 title="业务员">
+                                <input type="checkbox" name="visible" value=12 title="人事部">
+                                <input type="checkbox" name="visible" value=13 title="财务部">
+
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-upload">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">缩略图</label>
+                                    <button type="button" class="layui-btn" id="test1">上传图片</button>
+                                </div>
+                                <div class="layui-upload-list layui-inline">
+                                    <img class="layui-upload-img" id="image" name="image" style="width: 200px;">
+                                    <p id="demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">内容</label>
+                            <div class="layui-input-block">
+                                <!-- 加载编辑器的容器 -->
+                                <textarea name="body" class="layui-textarea" placeholder="公告详细内容" id="body"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit="" lay-filter="vaeform">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    layui.use('article', layui.factory('article')).use(['table','upload','form', 'article', 'admin'], function(){
+        var form = layui.form;
+        var layer = layui.layer;
+        var table = layui.table;
+        var $ = layui.$;
+        var upload = layui.upload;
+        var admin = layui.admin;
+        form.render();
+
+
+        //普通图片上传
+        var imgUrl = "";
+        var uploadInst = upload.render({
+            elem: '#test1'
+            , url: '/api/upload/one' //改成您自己的上传接口
+            , accept: 'image'
+            , headers: { //通过 request 头传递
+                token: layui.data('layuiAdmin').token
+            }
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#image').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                console.log(res.data);
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+                imgUrl = res.data.url;
+                $('#image').attr('src', res.data.url); //图片链接（base64）
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+
+
+        //监听提交
+        form.on('submit(vaeform)', function(data){
+            if(!imgUrl) {
+                layer.msg("未上传缩略图");
+                return;
+            }
+            data.field.image = imgUrl;
+
+            //获取checkbox[name='like']的值
+            var arr = new Array();
+            $("input:checkbox[name='visible']:checked").each(function(i){
+                arr[i] = parseInt($(this).val());
+            });
+            data.field.visible = arr;//将数组合并成字符串
+            data.field.type = 2;
+            console.log(data.field);
+
+            admin.req({
+                url: "/api/articles/add"
+                ,type: "post"
+                ,data: data.field
+                , headers: { //通过 request 头传递
+                    token: layui.data('layuiAdmin').token
+                }
+                ,success: function(res) {
+
+                    layer.closeAll();
+                    layer.msg(res.msg);
+                    table.reload("LAY-article-list");
+                }
+            });
+
+        });
+
+    });
+
+
+</script>

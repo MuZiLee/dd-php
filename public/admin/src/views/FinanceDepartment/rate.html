@@ -1,0 +1,143 @@
+
+<title>费率管理 - 手续费管理</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>费率管理</cite></a>
+        <a><cite>手续费管理</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">手续费</div>
+                <div class="layui-card-body">
+
+                    <div class="layui-form" wid100 id="LAY-rate-form" lay-filter="LAY-rate-form">
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                            <legend>提现手续费</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">提现手续费（元/笔）</label>
+                            <div class="layui-input-inline">
+                                <input type="text"
+                                       id="service_charge_for_withdrawal"
+                                       name="service_charge_for_withdrawal"
+                                       lay-filter="service_charge_for_withdrawal"
+                                       value="0.00"
+                                       class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux"></div>
+                            <div class="layui-input-inline">
+                                <button class="layui-btn" style="width: 100%" lay-submit lay-filter="LAY-rate-form-rate-submit">确认保存</button>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">用户单笔提现手续费 如：100元 x 3.0元 = 3元</div>
+                        </div>
+
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                            <legend>提成手续费</legend>
+                        </fieldset>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">提成提现手续费（%/笔）</label>
+                            <div class="layui-input-inline">
+                                <input type="text"
+                                       id="commission_fee"
+                                       name="commission_fee"
+                                       lay-filter="commission_fee"
+                                       value="0.00"
+                                       class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux"></div>
+                            <div class="layui-input-inline">
+                                <button class="layui-btn" style="width: 100%" lay-submit lay-filter="LAY-partnerRate-form-rate-submit">确认保存</button>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">合伙人单笔提现手续费 如：100元 x 0.01 = 1元</div>
+                        </div>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                            <legend>其他</legend>
+                        </fieldset>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'admin', 'layer'], function() {
+        var form = layui.form;
+        var admin = layui.admin;
+        var layer = layui.layer;
+
+
+        /// 普通用户提成费率
+        admin.req({
+            url: '/api/wallet/getServiceCharge'
+            ,type: "post"
+            ,success: function(res) {
+
+                var data = res.data;
+                console.log(data);
+                if (data) {
+
+                    form.val("LAY-rate-form",{
+                        "service_charge_for_withdrawal": data.service_charge_for_withdrawal,
+                        "commission_fee": data.commission_fee
+                    });
+                    form.render();
+                }
+            }
+        });
+
+
+
+        // 普通用户提现手续费提交 一般手续费
+        form.on('submit(LAY-rate-form-rate-submit)', function(data){
+            console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+            console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+
+            admin.req({
+                url: '/api/wallet/generalHandlingCharges'
+                ,type: "post"
+                ,data: data.field
+                ,success: function(res) {
+
+                    layer.msg("普通用户提成费率更新："+res.msg);
+                }
+            });
+            return false;
+        });
+
+
+        // 合伙人提成费率提交
+        form.on('submit(LAY-partnerRate-form-rate-submit)', function(data){
+            console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+            console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            data.field.rate = data.field.partnerRate;
+            console.log(data.field);
+
+            admin.req({
+                url: '/api/wallet/updateCommissionFee'
+                ,type: "post"
+                ,data: data.field
+                ,success: function(res) {
+                    console.log(res);
+                    layer.msg("合伙人提成费率更新："+res.msg);
+                }
+            });
+            return false;
+        });
+
+
+
+
+    });
+</script>

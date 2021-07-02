@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>职位详情</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="../admin/start/layui/css/layui.css">
+</head>
+
+<body>
+<section class="page">
+
+    <!--头部-->
+    <header>
+        <div class="banner-area">
+            <div class="swiper-container">
+                <div class="swiper-wrapper swiper-cover"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="head-img" style="margin-top: 20px;"></div>
+        </div>
+
+
+        <div class="header-bottom">
+            <!--职位名称-->
+            <div class="job-area"><span class="job"></span></div>
+            <!--综合薪资-->
+<!--            <div class="wu-tips"></div>-->
+<!--            <div class="job-require"></div>-->
+            <div class="money"><span class="people"></span></div>
+            <div class="head-line"></div>
+            <!--温馨提示-->
+            <div class="job_tip"></div>
+        </div>
+    </header>
+    <!--基本介绍-->
+    <dl>
+        <dt><img src="./img/btzs.png"/>基本介绍<div class="title-line-area"><div class="line"></div></div></dt>
+        <dd><span class="label">发薪日期</span><span class="发薪日期"></span></dd>
+        <dd><span class="label">身份证信息</span><span class="身份证信息"></span></dd>
+        <dd><span class="label">照片</span><span class="照片"></span></dd>
+        <dd><span class="label">毕业证</span><span class="毕业证"></span></dd>
+        <dd><span class="label">毕业证明复印件</span><span class="毕业证明复印件"></span></dd>
+        <dd><span class="label">工作环境</span><span class="工作环境"></span></dd>
+        <dd><span class="label">交通</span><span class="交通"></span></dd>
+        <dd><span class="label">年龄要求</span><span class="年龄要求"></span></dd>
+        <dd><span class="label">膳食标准</span><span class="膳食标准"></span></dd>
+        <dd><span class="label">宿舍位置</span><span class="宿舍位置"></span></dd>
+        <dd><span class="label">宿舍住多少人</span><span class="宿舍住多少人"></span></dd>
+        <dd><span class="label">是否有厕所</span><span class="是否有厕所"></span></dd>
+        <dd><span class="label">体验</span><span class="体验"></span></dd>
+        <dd><span class="label">保险</span><span class="保险"></span></dd>
+        <dd><span class="label">上班方式</span><span class="上班方式"></span></dd>
+    </dl>
+    <!--岗位要求-->
+    <dl>
+        <dt><img src="./img/btzs.png"/>职位说明<div class="title-line-area"><div class="line"></div></div></dt>
+        <dd><span class="职位说明"></span></dd>
+    </dl>
+    <!--合同说明-->
+    <dl>
+        <dt><img src="./img/btzs.png"/>合同说明<div class="title-line-area"><div class="line"></div></div></dt>
+        <dd><span class="合同说明"></span></dd>
+    </dl>
+    <!--薪资结构-->
+    <dl>
+        <dt><img src="./img/btzs.png"/>薪资结构<div class="title-line-area"><div class="line"></div></div></dt>
+        <dd><span class="薪资结构"></span></dd>
+    </dl>
+    <!--工厂介绍-->
+    <dl>
+        <dt><img src="./img/btzs.png"/>工厂介绍<div class="title-line-area"><div class="line"></div></div></dt>
+        <dd><span class="label">工厂名称</span><span class="工厂名称"></span></dd>
+        <dd><span class="label">企业性质</span><span class="企业性质"></span></dd>
+        <dd><span class="label">工厂面积</span><span class="工厂面积"></span></dd>
+        <dd><span class="label">现有员工</span><span class="现有员工"></span></dd>
+        <dd><span class="label">男女比例</span><span class="男女比例"></span></dd>
+        <dd><span class="label">平均年龄</span><span class="平均年龄"></span></dd>
+        <dd><span class="label">工厂地址</span><span class="工厂地址"></span></dd>
+    </dl>
+    <!--其他-->
+    <dl>
+        <dt><img src="./img/btzs.png"/>其他<div class="title-line-area"><div class="line"></div></div></dt>
+        <dd><span class="label">人脸识别</span><span class="人脸识别"></span></dd>
+        <dd><span class="label">纹身</span><span class="纹身"></span></dd>
+        <dd><span class="label">烟疤</span><span class="烟疤"></span></dd>
+        <dd><span class="label">英文要求</span><span class="英文要求"></span></dd>
+        <dd><span class="label">算术要求</span><span class="算术要求"></span></dd>
+        <dd><span class="label">无尘服</span><span class="无尘服"></span></dd>
+        <dd><span class="label">体内检查</span><span class="体内检查"></span></dd>
+        <dd><span class="label">培训内容</span><span class="培训内容"></span></dd>
+        <dd><span class="label">培训时间</span><span class="培训时间"></span></dd>
+        <dd><span class="label">民族限制</span><span class="民族限制"></span></dd>
+        <dd><span class="label">考试</span><span class="考试"></span></dd>
+    </dl>
+
+
+</section>
+<script src="./js/zepto.min.js"></script>
+<script src="./js/swiper.min.js"></script>
+<script src="../admin/start/layui/layui.js"></script>
+<script>
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+        var r = window.location.search.substr(1).match(reg) //search,查询？后面的参数，并匹配正则
+        if(r != null) return unescape(r[2])
+        return null
+    }
+
+    function startBanner(list) {
+        for(var i = 0; i < list.length; i++) {
+            var html =
+                "<div class=\"swiper-slide\">" +
+                "<img src=\"" +
+                list[i] +
+                "\"  class=\"banner-img\"/>" +
+                "</div>"
+            $(".swiper-wrapper").append(html)
+        }
+
+        var swiper = new Swiper(".swiper-container", {
+            spaceBetween: 30,
+            autoplay: {
+                disableOnInteraction: false
+            },
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination"
+            }
+        })
+    }
+
+    $(function() {
+        console.log("http://" + window.location.host);
+        var id = GetQueryString("id")
+        $.post(
+            "http://" + window.location.host + "/api/factory/detailJob", {jid: id},
+            function(res) {
+                console.log(res.data);
+
+                var data = res.data;
+                var factory = data.factory;
+                var images = data.factory.images;
+                var information = data.factory.information;
+                var environmental = data.factory.environmental;
+
+                console.log("job,", data)
+
+                // if(data.isHot == 1) {
+                //     var h = "<span class=\"status\">热招中</span>"
+                //     $(".status").append(h)
+                // }
+
+                // if(data.treatment) {
+                //     var tips = data.treatment.split("，")
+                //     for(var j = 0; j < tips.length; j++) {
+                //         var t = "<span class=\"treatment\">" + tips[j] + "</span>"
+                //         $(".wu-tips").append(t)
+                //     }
+                // }
+
+
+                var imgs = new Array();
+                for(var index in images) {
+                    console.log(images[index].url);
+                    imgs.push("http://" + window.location.host + images[index].url);
+                }
+                // banner图
+                this.startBanner(imgs)
+                //Logo
+                $(".head-img").css("background-image", "url(" + factory.logo + ")")
+                //职位名称
+                $(".job").text(data.job_name)
+                //综合薪资
+                $(".money").text("￥"+data.minimum_search_range +" - "+data.maximum_salary_range);
+                //温馨提示
+                $(".job_tip").text("温馨提示:" + data.reminder)
+
+            //基本介绍
+                //发薪日期
+                $(".发薪日期").text(data.job_payroll_time)
+                //身份证信息
+                $(".身份证信息").text(data.certificates)
+                //照片
+                $(".照片").text(data.phto)
+                //毕业证
+                $(".毕业证").text(data.diploma)
+                //毕业证明复印件
+                $(".毕业证明复印件").text(data.diploma_copy)
+                //工作环境
+                $(".工作环境").text(data.job_environment)
+                //交通
+                $(".交通").text(data.traffic)
+                $(".年龄要求").text(environmental.age_requirements)
+                $(".膳食标准").text(environmental.dietary_standard)
+                $(".宿舍位置").text(environmental.dormitory_location)
+                $(".宿舍住多少人").text(environmental.people_of_dormitory)
+                $(".是否有厕所").text(environmental.is_toilet)
+                $(".体验").text(environmental.is_experience)
+                $(".保险").text(environmental.is_insurance)
+                $(".上班方式").text(environmental.way_to_work)
+
+            //职位说明
+                $(".职位说明").text(data.job_description)
+            //合同说明
+                $(".合同说明").text(data.contract_note)
+            //薪资结构
+                $(".薪资结构").text(data.salary_structure)
+            //工厂介绍
+                //工厂名称
+                $(".工厂名称").text(factory.factory_name)
+                //企业性质
+                $(".企业性质").text(information.nature_of_enterprise)
+                //工厂面积
+                $(".工厂面积").text(information.plant_area)
+                //现有员工
+                $(".现有员工").text(information.existing_employees)
+                //男女比例
+                $(".男女比例").text(information.ratio_of_men_to_women)
+                //平均年龄
+                $(".平均年龄").text(information.average_age)
+                //工厂地址
+                $(".工厂地址").text(factory.province +' | ' + factory.city +' | ' + factory.district +' | ' + factory.addres)
+
+            //其他
+                //人脸识别
+                $(".人脸识别").text(data.face_recognition)
+                //纹身
+                $(".纹身").text(data.tattoo)
+                //烟疤
+                $(".烟疤").text(data.smoke_scars)
+                //英文要求
+                $(".英文要求").text(data.english_requirements)
+                //算术要求
+                $(".算术要求").text(data.arithmetic_requirements)
+                //无尘服
+                $(".无尘服").text(data.dust_free_clothes)
+                //体内检查
+                $(".体内检查").text(data.in_vivo_examination)
+                //培训内容
+                $(".培训内容").text(environmental.training_content)
+                //培训时间
+                $(".培训时间").text(environmental.training_time)
+                //民族限制
+                $(".民族限制").text(environmental.ethnic_restrictions)
+                //考试
+                $(".考试").text(data.teturn_to_factory_rules)
+
+            }
+        )
+    })
+
+</script>
+</body>
+</html>

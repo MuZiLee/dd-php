@@ -1,0 +1,64 @@
+
+<title>银行列表</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>银行列表</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+
+
+                    <table class="layui-hide" id="LAY-bank-list" lay-filter="LAY-bank-list"></table>
+
+                    <!--id-->
+                    <script type="text/html" id="idTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.id || ""}}</label>
+                    </script>
+
+
+                    <!--title-->
+                    <script type="text/html" id="titleTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.title ||
+                            ""}}</label>
+                    </script>
+
+                    <!--bankcode-->
+                    <script type="text/html" id="bankcodeTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.bank_code ||
+                            ""}}</label>
+                    </script>
+
+                    <!--bank-->
+                    <script type="text/html" id="bankTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.bank ||
+                            ""}}</label>
+                    </script>
+                    <!--rate-->
+                    <script type="text/html" id="rateTpl">
+                        <label style="display: inline-block; width: 100%; text-align: center">{{ d.rate == 0 ? "未知" : d.rate}}</label>
+                    </script>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    layui.use('bank', layui.factory('bank')).use(['bank'], function(){
+
+    });
+
+</script>
